@@ -1,3 +1,4 @@
 # Machine-Learning-Optimization
 
-Reference paper: http://proceedings.mlr.press/v29/Glasmachers13.pdf
+Reference papers: "Accelerated Coordinate Descent
+with Adaptive Coordinate Frequencies", http://proceedings.mlr.press/v29/Glasmachers13.pdf
