@@ -1,4 +1,7 @@
 # Machine-Learning-Optimization
 
-Reference papers: "Accelerated Coordinate Descent
-with Adaptive Coordinate Frequencies", http://proceedings.mlr.press/v29/Glasmachers13.pdf
+Reference papers:
+
+"Accelerated Coordinate Descent with Adaptive Coordinate Frequencies", http://proceedings.mlr.press/v29/Glasmachers13.pdf
+"Global Convergence of Block Coordinate Descent in Deep Learning", https://proceedings.mlr.press/v97/zeng19a.html
+
