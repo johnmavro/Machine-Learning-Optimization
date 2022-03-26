@@ -19,20 +19,20 @@ This class is a definition of 3 layer perceptron with Relu activation functions 
 ```python
 def accuracy(predicted, reference):
 ```
-The definition of the accuracy metric usable with ***Pytorch tensors*** with the following parameters:
-***predicted*** the predicted labels from the model
+The definition of the accuracy metric usable with ***Pytorch tensors*** with the following parameters:<br>
+***predicted*** the predicted labels from the model<br>
 ***reference*** the true value of samples.
 
 3.
 ```python
 def train_model(model,dataset_train,dataset_test,optimizer,criterion,epochs):
 ```
-The function used for training the model and its parameters are the following:
-***model*** the model we wish to train (must be implemented in pytorch)
-***dataset_train*** the training dataset (use pytorch dataset loader to create this see mnist example in notebook)
-***dataset_test*** the testing dataset (use pytorch dataset loader to create this see mnist example in notebook)
-***optimizer*** the optimizer (must be compatible with pytorch optim library)
-***criterion*** the loss metric that the optimizer uses
+The function used for training the model and its parameters are the following:<br>
+***model*** the model we wish to train (must be implemented in pytorch)<br>
+***dataset_train*** the training dataset (use pytorch dataset loader to create this see mnist example in notebook)<br>
+***dataset_test*** the testing dataset (use pytorch dataset loader to create this see mnist example in notebook)<br>
+***optimizer*** the optimizer (must be compatible with pytorch optim library)<br>
+***criterion*** the loss metric that the optimizer uses<br>
 ***epochs*** the number of epochs that the optimizer should iterate over the dataset
 
 # Reference papers:
