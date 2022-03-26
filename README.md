@@ -6,7 +6,8 @@
 
 For the time being this file only contains the following:
 
-1.```python
+1.
+```python
 class MultiLayerPerceptron(torch.nn.Module):
 ```
 This class is a definition of 3 layer perceptron with Relu activation functions and an output layer of size 10 (1 output node corresponds to 1 of the 10 digits of the mnist dataset). The class contains the following two functions:
