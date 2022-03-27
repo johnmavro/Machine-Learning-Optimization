@@ -1,14 +1,14 @@
-## Machine-Learning-Optimization
+# Machine-Learning-Optimization
 
 Please don't upload in the main branch for the moment, just on the two other ones.
 
-# Packages 
+## Packages 
 
 The code uses currently the following packages:
 
 Numpy, Scipy, Torch, TorchVision, Matplotlib
 
-# Useful links
+## Useful links
 
 The following link
 
