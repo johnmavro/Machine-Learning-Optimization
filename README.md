@@ -37,9 +37,7 @@ The function used for training the model and its parameters are the following:<b
 
 # Baseline tests
 
-## Dataset: MNIST dataset
-
-## Model: 3 layer MLP
+Tested on MNIST dataset using a 3 layer MLP as a baseline model
 
 ## Results
 
