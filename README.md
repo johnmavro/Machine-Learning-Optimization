@@ -35,20 +35,20 @@ The function used for training the model and its parameters are the following:<b
 ***criterion*** the loss metric that the optimizer uses<br>
 ***epochs*** the number of epochs that the optimizer should iterate over the dataset
 
+# Baseline tests
+
+## Dataset: MNIST dataset
+
+## Model: 3 layer MLP
+
+## Results
+
+|      | epochs | accuracy | time    |
+|------|--------|----------|---------|
+| Adam | 10     | 0.97920  | 120.039 |
+| SGD  | 50     | 0.90920  | 545.086 |
+
 # Reference papers:
 
 "Accelerated Coordinate Descent with Adaptive Coordinate Frequencies", http://proceedings.mlr.press/v29/Glasmachers13.pdf <br />
 "Global Convergence of Block Coordinate Descent in Deep Learning", https://proceedings.mlr.press/v97/zeng19a.html <br />
-
-# Baseline tests
-
-## Dataset
-
-- MNIST dataset
-
-## Model
-
-- 3 layer MLP
-
-## Results
-
