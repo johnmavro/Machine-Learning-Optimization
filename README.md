@@ -1,7 +1,13 @@
-# Machine-Learning-Optimization
+# Machine-Learning-Optimization - Coordinate descent for Deep Neural Networks
+
+# Reference papers:
+
+"Accelerated Coordinate Descent with Adaptive Coordinate Frequencies", http://proceedings.mlr.press/v29/Glasmachers13.pdf <br />
+"Global Convergence of Block Coordinate Descent in Deep Learning", https://proceedings.mlr.press/v97/zeng19a.html <br />
 
 # Files
 
+[comment]: <> (
 ## CoordinateDescent.ipynb
 
 For the time being this file only contains the following:
@@ -34,6 +40,8 @@ The function used for training the model and its parameters are the following:<b
 ***optimizer*** the optimizer (must be compatible with pytorch optim library)<br>
 ***criterion*** the loss metric that the optimizer uses<br>
 ***epochs*** the number of epochs that the optimizer should iterate over the dataset
+)
+
 
 # Baseline tests
 
@@ -45,8 +53,3 @@ Tested on MNIST dataset using a 3 layer MLP as a baseline model
 |------|--------|----------|---------|
 | Adam | 10     | 0.97920  | 120.039 |
 | SGD  | 50     | 0.90920  | 545.086 |
-
-# Reference papers:
-
-"Accelerated Coordinate Descent with Adaptive Coordinate Frequencies", http://proceedings.mlr.press/v29/Glasmachers13.pdf <br />
-"Global Convergence of Block Coordinate Descent in Deep Learning", https://proceedings.mlr.press/v97/zeng19a.html <br />
