@@ -41,13 +41,24 @@ The function used for training the model and its parameters are the following:<b
 )
 --->
 
-# Baseline tests
+## Files
 
-Tested on MNIST dataset using a 3 layer MLP as a baseline model
+baseline_Adam.ipynb: contains the implementation of the baseline model using Adam optimizer. The results will be compared with the notebook block_coordinate_descent.
+
+baseline_SGD.ipynb: contains the implementation of the baseline model using SGD optimizer. The results will be compared with the notebook block_coordinate_descent.
+
+Block_coordinate_descent.ipynb: contains the implementation of the block coordinate descent approach to optimize Deep Neural Networks.
+
+The folder block_coordinate_figures: contains the figures obtained by plotting the evolution of test accuracies and train losses when the neural network is optimized using the different optimizers.
+
+The file utilities.py: contains useful functions shared between notebooks.
 
 ## Results
 
-|      | epochs | accuracy | time    |
-|------|--------|----------|---------|
-| Adam | 10     | 0.97920  | 120.039 |
-| SGD  | 50     | 0.90920  | 545.086 |
+The results are obtained on a multi-layer-perceptron with 2 hidden layers with 1500 neurons each and using the MNIST Dataset. 
+
+|  Opt. Method | Epochs | Test accuracy  
+| ----- | ----- | ----- |
+| SGD   |   10    | 65 %  | 
+| Adam  |   10    | 95 %  | 
+| Coordinate Descent |  | |
