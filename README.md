@@ -1,11 +1,10 @@
 # Machine-Learning-Optimization - Coordinate descent for Deep Neural Networks
 
-# Reference papers:
+## Reference papers:
 
 "Accelerated Coordinate Descent with Adaptive Coordinate Frequencies", http://proceedings.mlr.press/v29/Glasmachers13.pdf <br />
 "Global Convergence of Block Coordinate Descent in Deep Learning", https://proceedings.mlr.press/v97/zeng19a.html <br />
 
-# Files
 
 <!--- ## CoordinateDescent.ipynb
 For the time being this file only contains the following:
@@ -43,15 +42,16 @@ The function used for training the model and its parameters are the following:<b
 
 ## Files
 
-baseline_Adam.ipynb: contains the implementation of the baseline model using Adam optimizer. The results will be compared with the notebook block_coordinate_descent.
+**baseline_Adam.ipynb**: contains the implementation of the baseline model using Adam optimizer. The results will be compared with the notebook block_coordinate_descent.
 
-baseline_SGD.ipynb: contains the implementation of the baseline model using SGD optimizer. The results will be compared with the notebook block_coordinate_descent.
+**baseline_SGD.ipynb**: contains the implementation of the baseline model using SGD optimizer. The results will be compared with the notebook block_coordinate_descent.
 
-Block_coordinate_descent.ipynb: contains the implementation of the block coordinate descent approach to optimize Deep Neural Networks.
+**Block_coordinate_descent.ipynb**: contains the implementation of the block coordinate descent approach to optimize Deep Neural Networks.
 
-The folder block_coordinate_figures: contains the figures obtained by plotting the evolution of test accuracies and train losses when the neural network is optimized using the different optimizers.
+**utilities.py**: contains useful functions shared between notebooks.
 
-The file utilities.py: contains useful functions shared between notebooks.
+The folder **block_coordinate_figures**: contains the figures obtained by plotting the evolution of test accuracies and train losses when the neural network is optimized using the different optimizers.
+
 
 ## Results
 
