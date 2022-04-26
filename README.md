@@ -57,8 +57,8 @@ The folder **block_coordinate_figures**: contains the figures obtained by plotti
 
 The results are obtained on a multi-layer-perceptron with 2 hidden layers with 1500 neurons each and using the MNIST Dataset. 
 
-|  Opt. Method | Epochs | Test accuracy  
-| ----- | ----- | ----- |
-| SGD   |   10    | 65 %  | 
-| Adam  |   10    | 95 %  | 
-| Coordinate Descent |  | |
+|  Opt. Method | Epochs | Test accuracy | Training time|
+| ----- | ----- | ----- | ----- |
+| SGD   |   10    | 65 %  |     |
+| Adam  |   20    | 98 %  |  115 s   |
+| Coordinate Descent |  | |     |
