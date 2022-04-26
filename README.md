@@ -59,6 +59,6 @@ The results are obtained on a multi-layer-perceptron with 2 hidden layers with 1
 
 |  Opt. Method | Epochs | Test accuracy | Training time|
 | ----- | ----- | ----- | ----- |
-| SGD   |   10    | 65 %  |     |
+| SGD   |   50    | 91 %  |  282 s   |
 | Adam  |   20    | 98 %  |  115 s   |
 | Coordinate Descent |  | |     |
