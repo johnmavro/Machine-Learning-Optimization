@@ -7,7 +7,8 @@
 
 # Files
 
-[comment]: <> (## CoordinateDescent.ipynb For the time being this file only contains the following:
+<!--- ## CoordinateDescent.ipynb
+For the time being this file only contains the following:
 
 1.
 ```python
@@ -38,7 +39,7 @@ The function used for training the model and its parameters are the following:<b
 ***criterion*** the loss metric that the optimizer uses<br>
 ***epochs*** the number of epochs that the optimizer should iterate over the dataset
 )
-
+--->
 
 # Baseline tests
 
