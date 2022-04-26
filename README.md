@@ -7,10 +7,7 @@
 
 # Files
 
-[comment]: <> (
-## CoordinateDescent.ipynb
-
-For the time being this file only contains the following:
+[comment]: <> (## CoordinateDescent.ipynb For the time being this file only contains the following:
 
 1.
 ```python
