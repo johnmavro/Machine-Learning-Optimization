@@ -1,11 +1,12 @@
 import torch
 import torch.nn as nn
-
+import numpy as np
 
 
 def update_v_js(U1, U2, W, b, rho, gamma):
     """
     The function updates the V_js parameters during the training phase
+    
     :param U1: The U parameter on the same level of V that we are updating
     :param U2: The U parameter which is in the next level of the V that we are updating
     :param W: The W parameter which is in the next level of the V that we are updating
@@ -26,6 +27,7 @@ def update_v_js(U1, U2, W, b, rho, gamma):
 def update_wb_js(U, V, W, b, alpha, rho):
     """
     The function updates the W and b parameters during the training phase
+    
     :param U: The U in the current level of W and b
     :param V: The V in the previous level with respect to the W that we are updating
     :param W: The current W that we have to update
@@ -45,7 +47,8 @@ def update_wb_js(U, V, W, b, alpha, rho):
 
 def relu_prox(a, b, gamma, d, N):
     """
-    The
+    The function compute the solution to the relu proximal update problem
+    
     :param a: the a in the closed formula of the linearized update
     :param b: the b in the closed formula of the linearized update
     :param gamma: The constant used in the update
