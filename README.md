@@ -1,9 +1,12 @@
-# Machine-Learning-Optimization
+# Machine-Learning-Optimization - Coordinate descent for Deep Neural Networks
 
-# Files
+## Reference papers:
 
-## CoordinateDescent.ipynb
+"Accelerated Coordinate Descent with Adaptive Coordinate Frequencies", http://proceedings.mlr.press/v29/Glasmachers13.pdf <br />
+"Global Convergence of Block Coordinate Descent in Deep Learning", https://proceedings.mlr.press/v97/zeng19a.html <br />
 
+
+<!--- ## CoordinateDescent.ipynb
 For the time being this file only contains the following:
 
 1.
@@ -34,19 +37,28 @@ The function used for training the model and its parameters are the following:<b
 ***optimizer*** the optimizer (must be compatible with pytorch optim library)<br>
 ***criterion*** the loss metric that the optimizer uses<br>
 ***epochs*** the number of epochs that the optimizer should iterate over the dataset
+)
+--->
 
-# Baseline tests
+## Files
 
-Tested on MNIST dataset using a 3 layer MLP as a baseline model
+**baseline_Adam.ipynb**: contains the implementation of the baseline model using Adam optimizer. The results will be compared with the notebook block_coordinate_descent.
+
+**baseline_SGD.ipynb**: contains the implementation of the baseline model using SGD optimizer. The results will be compared with the notebook block_coordinate_descent.
+
+**Block_coordinate_descent.ipynb**: contains the implementation of the block coordinate descent approach to optimize Deep Neural Networks.
+
+**utilities.py**: contains useful functions shared between notebooks.
+
+The folder **block_coordinate_figures**: contains the figures obtained by plotting the evolution of test accuracies and train losses when the neural network is optimized using the different optimizers.
+
 
 ## Results
 
-|      | epochs | accuracy | time    |
-|------|--------|----------|---------|
-| Adam | 10     | 0.97920  | 120.039 |
-| SGD  | 50     | 0.90920  | 545.086 |
+The results are obtained on a multi-layer-perceptron with 2 hidden layers with 1500 neurons each and using the MNIST Dataset. 
 
-# Reference papers:
-
-"Accelerated Coordinate Descent with Adaptive Coordinate Frequencies", http://proceedings.mlr.press/v29/Glasmachers13.pdf <br />
-"Global Convergence of Block Coordinate Descent in Deep Learning", https://proceedings.mlr.press/v97/zeng19a.html <br />
+|  Opt. Method | Epochs | Test accuracy | Training time|
+| ----- | ----- | ----- | ----- |
+| SGD   |   50    | 91 %  |  282 s   |
+| Adam  |   20    | 98 %  |  115 s   |
+| Coordinate Descent |  | |     |
