@@ -50,29 +50,3 @@ class CyclicCoordinateDescent(optim.Optimizer):
                         p.data.add_(-lr, p.grad.data)
                         state = self.state[p]
         return loss
-
-
-class BlockCoordinateDescent(optim.Optimizer)
-        """
-        Performs an update picking randomly a coordinate in
-
-
-        """
-
-        def __init__(self, params, lr):
-            defaults = dict(lr=lr)
-            self.params = params
-
-            super(BlockCoordinateDescent, self).__init__(params, defaults)
-
-        def step(self, closure=None)
-            loss = None
-            if closure is not None:
-                with torch.enable_grad():
-                    loss = closure
-
-            for group in self.param_groups:
-                params_with_grad = []
-                d_p_list = []
-                lr = group["lr"]
-                ps = rand.choice
