@@ -1,19 +1,32 @@
 # Machine-Learning-Optimization
 
-Please don't upload in the main branch for the moment, just on the two other ones.
+## Reference papers:
 
-## Packages 
+"Deep Neural Network Training with Frank-Wolfe", https://arxiv.org/pdf/2010.07243.pdf
 
-The code uses currently the following packages:
+"Deep Frank-Wolfe for Neural Network Optimization", https://arxiv.org/pdf/1811.07591.pdf
 
-Numpy, Scipy, Torch, TorchVision, Matplotlib
+## Requirements
 
-## Useful links
+Torch, TorchVision, Numpy, Scipy, Pandas
+A file requirements.txt will be added soon.
 
-The following link
+## Files
 
-http://mcneela.github.io/machine_learning/2019/09/03/Writing-Your-Own-Optimizers-In-Pytorch.html
+DFW.py contains the implementation of the Deep Frank Wolfe optimizer compatible with the Pytorch library, as presented in Algorithm 1 in  https://arxiv.org/pdf/1811.07591.pdf
 
-contains a guided example for the implementation of customer optimizers in Pytorch. Other useful informations can be found here
+SFW.py contains the implementation of the Stochastic Frank Wolfe optimizer compatible with the Pytorch library, as presented in Algorithm 1 in https://arxiv.org/pdf/2010.07243.pdf
 
-https://pytorch.org/docs/stable/optim.html
+The folder constraints contains constraints.py which implements the standard projection algorithm and the solutions to the oracle problem for SFW.
+
+The folder utils contains support functions for the training of the models and loading of the datasets for the baseline tests.
+
+## Results
+
+The results are obtained on a MLP with 3 hidden layers and are used as a baseline
+
+|  Opt. Method | Epochs | Test accuracy  
+| ----- | ----- | ----- |
+| SGD   |   10    | 65 %  | 
+| Adam  |   10    | 95 %  | 
+| DFW   |   10    | 96 %  |
