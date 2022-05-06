@@ -7,9 +7,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e0f47a9-c6b7-4ee2-bc5c-cdc731c9b191" name="Changes" comment="Small fix in loader.py">
+      <change afterPath="$PROJECT_DIR$/Frank Wolfe/.ipynb_checkpoints/MNIST_test-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frank Wolfe/utils/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frank Wolfe/utils/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/MNIST/raw/t10k-images-idx3-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/MNIST/raw/t10k-images-idx3-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/MNIST/raw/t10k-labels-idx1-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/MNIST/raw/t10k-labels-idx1-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/MNIST/raw/train-images-idx3-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/MNIST/raw/train-images-idx3-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/MNIST/raw/train-labels-idx1-ubyte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/MNIST/raw/train-labels-idx1-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cifar-10-batches-py/batches.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cifar-10-batches-py/data_batch_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cifar-10-batches-py/data_batch_2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cifar-10-batches-py/data_batch_3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cifar-10-batches-py/data_batch_4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cifar-10-batches-py/data_batch_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cifar-10-batches-py/readme.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cifar-10-batches-py/test_batch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cifar-10-python.tar.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/MNIST_test-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/MNIST_test-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MNIST_test.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/MNIST_test.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frank Wolfe/MNIST_test.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Frank Wolfe/MNIST_test.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frank Wolfe/SFW.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frank Wolfe/SFW.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frank Wolfe/constraints/constraints.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frank Wolfe/constraints/constraints.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/loader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +134,8 @@
       <workItem from="1650883634193" duration="821000" />
       <workItem from="1651598947458" duration="2486000" />
       <workItem from="1651687525420" duration="689000" />
+      <workItem from="1651759213238" duration="6000" />
+      <workItem from="1651856685479" duration="3984000" />
     </task>
     <task id="LOCAL-00001" summary="Added DFW.py with implementation of Frank-Wolfe optimizer">
       <created>1648726643922</created>
