@@ -56,50 +56,46 @@ def accuracy(predicted_logits, reference):
     return correct_predictions.sum().float() / correct_predictions.nelement()
 
 
-def train_test_split(train, test):
-    """
-    The functions splits the train and test set in x_train, x_test, y_train, y_test
-    :param train: <class: 'torchvision.datasets.mnist.MNIST'>
-                        The train set
-    :param test: <class: 'torchvision.datasets.mnist.MNIST'>
-                        The test set
-    :return: x_train, y_train, x_test, y_test: The train and test set separated in x and y
-    """
-    # train-set initialization
+def load_dataset(train, test, n_classes):
+  """
+  This function is used to preprocess the datasets and to split them in train and test
+  :param train: The training datasets
+  :param test: The testing datasets
+  :return x_train, y_train, x_test, y_test
+  """
 
-    x_d0 = train[0][0].size()[0]  # first dimension
-    x_d1 = train[0][0].size()[1]  # second dimension
-    x_d2 = train[0][0].size()[2]  # third dimension
-    N = len(train)
-    K = 10  # number of classes
+  #train-set initialization
+  x_d0 = train[0][0].size()[0]
+  x_d1 = test[0][0].size()[1]
+  x_d2 = train[0][0].size()[2]
+  N = x_d3 = len(train)
 
-    # we initialize empty arrays which will contains x_train and x_test
-    x_train = torch.empty((N, x_d0 * x_d1 * x_d2))
-    y_train = torch.empty(N, dtype=torch.long)
+  x_train = torch.empty(N,x_d0*x_d1*x_d2)
+  y_train = torch.empty(N, dtype=torch.long)
+  for i in range(N): 
+    x_train[i,:] = torch.reshape(train[i][0], (1, x_d0*x_d1*x_d2))
+    y_train[i] = train[i][1]
+  x_train = torch.t(x_train)
 
-    for i in range(N):
-        x_train[i, :] = torch.reshape(train[i][0], (1, x_d0 * x_d1 * x_d2))
-        y_train[i] = train[i][1]
+  # we perform one-hot encoding of the train labels
+  y_train_one_hot = torch.zeros(N, n_classes).scatter_(1, torch.reshape(y_train, (N, 1)), 1)
+  y_train_one_hot = torch.t(y_train_one_hot)
+  y_train = y_train
 
-    x_train = torch.t(x_train)
+  #test-set initialization
+  N_test = x_d3_test = len(test)
+  x_test = torch.empty(N_test,x_d0*x_d1*x_d2)
+  y_test = torch.empty(N_test, dtype=torch.long)
+  for i in range(N_test): 
+    x_test[i,:] = torch.reshape(test[i][0], (1, x_d0*x_d1*x_d2))
+    y_test[i] = test[i][1]
+  x_test = torch.t(x_test)
 
-    # y_one_hot = torch.zeros(N, K).scatter_(1, torch.reshape(y_train, (N, 1)), 1)
-    # y_one_hot = torch.t(y_one_hot).to(device=device)
+  # we perform one-hot encoding of the test labels
+  y_test_one_hot = torch.zeros(N_test, n_classes).scatter_(1, torch.reshape(y_test, (N_test, 1)), 1)
+  y_test_one_hot = torch.t(y_test_one_hot)
 
-    # test-set initialization
-    N_test = len(test)
-    x_test = torch.empty((N_test, x_d0 * x_d1 * x_d2))
-    y_test = torch.empty(N_test, dtype=torch.long)
-    for i in range(N_test):
-        x_test[i, :] = torch.reshape(test[i][0], (1, x_d0 * x_d1 * x_d2))
-        y_test[i] = test[i][1]
-
-    x_test = torch.t(x_test)
-
-    # y_test_one_hot = torch.zeros(N_test, K).scatter_(1, torch.reshape(y_test, (N_test, 1)), 1)
-    # y_test_one_hot = torch.t(y_test_one_hot).to(device=device)
-
-    return x_train, y_train, x_test, y_test
+  return x_train, y_train, x_test, y_test, y_train_one_hot, y_test_one_hot
 
 
 
