@@ -14,11 +14,12 @@ def plot_train_losses(num_epochs, losses, optimizer):
                     A string containing the name of the optimizer used to train the model
     :return: None
     """
+    fig = plt.figure()
     plt.xlabel('epochs')
     plt.ylabel('train losses')
     plt.plot(np.arange(0, num_epochs), losses)
     plt.title('train losses')
-    plt.savefig('block_coordinates_figures/' + 'train losses_' + optimizer)
+    fig.savefig('block_coordinates_figures/' + 'train losses_' + optimizer)
     plt.show()
 
 
@@ -33,11 +34,12 @@ def plot_test_accuracy(num_epochs, accuracies, optimizer):
                     A string containing the name of the optimizer used to train the model
     :return: None
     """
+    fig = plt.figure()
     plt.xlabel('epochs')
     plt.ylabel('test accuracies')
     plt.title('test accuracies')
     plt.plot(np.arange(0, num_epochs), accuracies)
-    plt.savefig('block_coordinates_figures/' + 'test accuracies_' + optimizer)
+    fig.savefig('block_coordinates_figures/' + 'test accuracies_' + optimizer)
     plt.show()
 
 
@@ -68,6 +70,7 @@ def load_dataset(train, test, n_classes):
   x_d0 = train[0][0].size()[0]
   x_d1 = test[0][0].size()[1]
   x_d2 = train[0][0].size()[2]
+  
   N = x_d3 = len(train)
 
   x_train = torch.empty(N,x_d0*x_d1*x_d2)
@@ -95,7 +98,7 @@ def load_dataset(train, test, n_classes):
   y_test_one_hot = torch.zeros(N_test, n_classes).scatter_(1, torch.reshape(y_test, (N_test, 1)), 1)
   y_test_one_hot = torch.t(y_test_one_hot)
 
-  return x_train, y_train, x_test, y_test, y_train_one_hot, y_test_one_hot
+  return x_train, y_train, x_test, y_test, y_train_one_hot, y_test_one_hot, x_d1, x_d2
 
 
 
