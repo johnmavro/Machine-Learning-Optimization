@@ -79,4 +79,6 @@ The following results are obtained on a multi-layer-perceptron with 1 hidden lay
 | ----- | ----- | ----- | ----- |
 | SGD   |      |     |     |
 | Adam  |      |     |     |
-| Block Coordinate Descent |  |  |  |
+| Block Coordinate Descent | 5 | 41.37% | 9.21 s |
+
+(alpha =2, gamma =0.2)
