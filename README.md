@@ -63,10 +63,20 @@ The following results are obtained on a multi-layer-perceptron with 1 hidden lay
 | Adam  |   20    | 98 % | 115 s |
 | Block Coordinate Descent | 39 | 96.08 % | 47.83 s |
 
-The following results are obtained on a multi-layer-perceptron with 10 hidden layers with 1500 neurons each and using the MNIST Dataset + linearization of the loss. 
+The following results are obtained on a multi-layer-perceptron with 1 hidden layer with 1500 neurons each and using the Fashion-MNIST Dataset + linearization of the loss. 
 
 |  Opt. Method | Epochs | Test accuracy | Training time |
 | ----- | ----- | ----- | ----- |
 | SGD   |      |     |     |
 | Adam  |      |     |     |
-| Block Coordinate Descent | 39 | 96.08 % | 47.83 s |
+| Block Coordinate Descent | 29 | 86.83 % | 39.26 s |
+
+(gamma=1, alpha=2)
+
+The following results are obtained on a multi-layer-perceptron with 1 hidden layer with 1500 neurons each and using the Cifar10 dataset + linearization of the loss. 
+
+|  Opt. Method | Epochs | Test accuracy | Training time |
+| ----- | ----- | ----- | ----- |
+| SGD   |      |     |     |
+| Adam  |      |     |     |
+| Block Coordinate Descent |  |  |  |
