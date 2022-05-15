@@ -55,10 +55,18 @@ The folder **block_coordinate_figures**: contains the figures obtained by plotti
 
 ## Results
 
-The results are obtained on a multi-layer-perceptron with 1 hidden layer with 1500 neurons each and using the MNIST Dataset. 
+The following results are obtained on a multi-layer-perceptron with 1 hidden layer with 1500 neurons each and using the MNIST Dataset + linearization of the loss. 
 
-|  Opt. Method | Epochs | Test accuracy | Training time|
+|  Opt. Method | Epochs | Test accuracy | Training time |
 | ----- | ----- | ----- | ----- |
 | SGD   |   50    | 91 % | 282 s |
 | Adam  |   20    | 98 % | 115 s |
+| Block Coordinate Descent | 39 | 96.08 % | 47.83 s |
+
+The following results are obtained on a multi-layer-perceptron with 10 hidden layers with 1500 neurons each and using the MNIST Dataset + linearization of the loss. 
+
+|  Opt. Method | Epochs | Test accuracy | Training time |
+| ----- | ----- | ----- | ----- |
+| SGD   |      |     |     |
+| Adam  |      |     |     |
 | Block Coordinate Descent | 39 | 96.08 % | 47.83 s |
