@@ -100,3 +100,4 @@ The following results are obtained on a multi-layer-perceptron with 1 hidden lay
 | Adam  |       |  |  |
 | Block Coordinate Descent | 28 | 86.63% | 38.75s |
 
+(alpha =2, gamma = 1.8)
