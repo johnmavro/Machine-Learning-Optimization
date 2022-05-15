@@ -82,3 +82,12 @@ The following results are obtained on a multi-layer-perceptron with 1 hidden lay
 | Block Coordinate Descent | 5 | 41.37% | 9.21 s |
 
 (alpha =2, gamma =0.2)
+
+
+The following results are obtained on a multi-layer-perceptron with 1 hidden layer with 1500 neurons each and using the MNIST Dataset without linearization of the loss. 
+
+|  Opt. Method | Epochs | Test accuracy | Training time |
+| ----- | ----- | ----- | ----- |
+| SGD   |   50    | 91 % | 282 s |
+| Adam  |   20    | 98 % | 115 s |
+| Block Coordinate Descent |  |  | |
