@@ -1,7 +1,7 @@
 from matplotlib import pyplot as plt
 import numpy as np
 import torch
-
+import pickle
 
 def plot_train_losses(num_epochs, losses, optimizer):
     """
@@ -20,6 +20,29 @@ def plot_train_losses(num_epochs, losses, optimizer):
     plt.plot(np.arange(0, num_epochs), losses)
     plt.title('train losses')
     fig.savefig('block_coordinates_figures/' + 'train losses_' + optimizer)
+    plt.show()
+
+def plot_convergence_rate_losses(num_epochs, losses, optimizer):
+    """
+    The function plots the evolution of the train losses with the number of epochs
+    The loss is plotted in loglog and in semilogy to explore the rate of convergence
+    :param num_epochs: int
+                    The number of epochs
+    :param losses: list
+                    A list containing the training losses
+    :param optimizer: string
+                    A string containing the name of the optimizer used to train the model
+    :return: None
+    """
+    fig, axes = plt.subplots(1, 2, figsize=(10, 6))
+    fig.suptitle('Training loss rate of convergence')
+    axes[0].semilogy(np.arange(losses.shape[0]), losses)
+    axes[0].set(xlabel='epochs', ylabel='train_loss')
+    axes[0].set_title('semilogy plot')
+    axes[1].loglog(np.arange(losses.shape[0]), losses)
+    axes[1].set(xlabel='epochs', ylabel='train_loss')
+    axes[1].set_title('loglog plot')
+    fig.savefig('block_coordinates_figures/' + 'train losses_' + optimizer + 'rate_conv')
     plt.show()
 
 
@@ -101,4 +124,26 @@ def load_dataset(train, test, n_classes):
   return x_train, y_train, x_test, y_test, y_train_one_hot, y_test_one_hot, x_d1, x_d2
 
 
+def pickle_results(name, train_loss, loss_class, accuracy_train, accuracy_val,
+                  weights, biases, alpha, gamma):
+  """
+  The function save the model in a pickle file.
+  :param name: The name of the file in which we save the model
+  :param train_loss: A list containing the training loss each epoch
+  :param loss_class: A list containing the cross-entropy loss for each epoch
+  :param accuracy_train: A list containing the accuracy for the training set at each epoch
+  :param accuracy_val: A list containing the accuracy for the test set at each epoch
+  :param weights: The weights of the best model
+  :param biases: The biases of the best model
+  :param alpha: The best found alpha
+  :param gamma: The best found gamma
+  :return None
+  """
+  dictionary_save = {"Weights": weights,"Biases":biases, "train_loss": train_loss,
+  "loss_class":loss_class,"accuracy_train":accuracy_train,"accuracy_test":accuracy_val, 
+  "alpha": alpha, "gamma": gamma}
 
+  results_name = "results_"+name
+  a_file = open(results_name,"wb")
+  pickle.dump(dictionary_save,a_file)
+  a_file.close()
