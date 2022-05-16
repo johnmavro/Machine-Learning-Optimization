@@ -101,3 +101,13 @@ The following results are obtained on a multi-layer-perceptron with 1 hidden lay
 | Block Coordinate Descent | 28 | 86.63% | 38.75s |
 
 (alpha =2, gamma = 1.8)
+
+The following results are obtained on a multi-layer-perceptron with 1 hidden layer with 1500 neurons each and using the CIFAR10 Dataset without linearization of the loss. 
+
+|  Opt. Method | Epochs | Test accuracy | Training time |
+| ----- | ----- | ----- | ----- |
+| SGD   |       |  |  |
+| Adam  |       |  |  |
+| Block Coordinate Descent | 42 | 43.80% | 155.97s |
+
+(alpha =2, gamma = 1.8)
