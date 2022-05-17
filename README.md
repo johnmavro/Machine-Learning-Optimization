@@ -111,3 +111,7 @@ The following results are obtained on a multi-layer-perceptron with 1 hidden lay
 | Block Coordinate Descent | 42 | 43.80% | 155.97s |
 
 (alpha =7, gamma = 0.2)
+
+# Remark
+1. From the first update rule of the paper we see that the size of $\alpha$ cannot be negligable otherswise the constraint that enforces the non-linear function $V=\sigma(U)$ will be neglected. This probably allows the network to go in a bizarre direction and creates problems.
+2. From the second update of the paper we see that the relative size of $\alpha$ and $\gamma$ needs to be large enough for the same reason.
