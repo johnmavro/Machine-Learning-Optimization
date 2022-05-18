@@ -56,7 +56,7 @@ The folder **block_coordinate_figures**: contains the figures obtained by plotti
 ## Results
 
 
-MNIST with linearization of the loss:
+-MNIST with linearization of the loss:
 1 hidden layer with 1500 neurons each. 
 
 |  Opt. Method | Epochs | Test accuracy | Training time |
@@ -68,7 +68,7 @@ MNIST with linearization of the loss:
 
 
 
-Fashion-MNIST with linearization of the loss:
+-Fashion-MNIST with linearization of the loss:
 1 hidden layer with 1500 neurons each.
 (gamma=1, alpha=2)
 
@@ -79,8 +79,9 @@ Fashion-MNIST with linearization of the loss:
 | Block Coordinate Descent | 29 | 86.83 % | 39.26 s |
 
 
-CIFAR10 with linearization of the loss:
+-CIFAR10 with linearization of the loss:
 1 hidden layer with 1500 neurons each.
+(alpha =2, gamma = 0.2)
 
 |  Opt. Method | Epochs | Test accuracy | Training time |
 | ----- | ----- | ----- | ----- |
@@ -88,10 +89,8 @@ CIFAR10 with linearization of the loss:
 | Adam  |      |     |     |
 | Block Coordinate Descent | 5 | 41.37% | 9.21 s |
 
-(alpha =2, gamma =0.2)
 
-
-MNIST Dataset without linearization of the loss:
+-MNIST Dataset without linearization of the loss:
 1 hidden layer with 1500 neurons each.
 
 |  Opt. Method | Epochs | Test accuracy | Training time |
@@ -100,7 +99,7 @@ MNIST Dataset without linearization of the loss:
 | Adam  |   20    | 98 % | 115 s |
 | Block Coordinate Descent | 38 | 96.15% | 52s |
 
-FASHION-MNIST without linearization of the loss:
+-FASHION-MNIST without linearization of the loss:
 1 hidden layer with 1500 neurons each.
 (alpha =2, gamma = 1.8)
 
@@ -110,7 +109,9 @@ FASHION-MNIST without linearization of the loss:
 | Adam  |       |  |  |
 | Block Coordinate Descent | 28 | 86.63% | 38.75s |
 
-CIFAR10 without linearization of the loss:
+
+
+-CIFAR10 without linearization of the loss:
 1 hidden layer with 1500 neurons each.
 (alpha =7, gamma = 0.2)
 
