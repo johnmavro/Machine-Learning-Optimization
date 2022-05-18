@@ -55,7 +55,9 @@ The folder **block_coordinate_figures**: contains the figures obtained by plotti
 
 ## Results
 
-The following results are obtained on a multi-layer-perceptron with 1 hidden layer with 1500 neurons each and using the MNIST Dataset + linearization of the loss. 
+
+MNIST with linearization of the loss:
+1 hidden layer with 1500 neurons each. 
 
 |  Opt. Method | Epochs | Test accuracy | Training time |
 | ----- | ----- | ----- | ----- |
@@ -63,7 +65,12 @@ The following results are obtained on a multi-layer-perceptron with 1 hidden lay
 | Adam  |   20    | 98 % | 115 s |
 | Block Coordinate Descent | 39 | 96.08 % | 47.83 s |
 
-The following results are obtained on a multi-layer-perceptron with 1 hidden layer with 1500 neurons each and using the Fashion-MNIST Dataset + linearization of the loss. 
+
+
+
+Fashion-MNIST with linearization of the loss:
+1 hidden layer with 1500 neurons each.
+(gamma=1, alpha=2)
 
 |  Opt. Method | Epochs | Test accuracy | Training time |
 | ----- | ----- | ----- | ----- |
@@ -71,9 +78,9 @@ The following results are obtained on a multi-layer-perceptron with 1 hidden lay
 | Adam  |      |     |     |
 | Block Coordinate Descent | 29 | 86.83 % | 39.26 s |
 
-(gamma=1, alpha=2)
 
-The following results are obtained on a multi-layer-perceptron with 1 hidden layer with 1500 neurons each and using the Cifar10 dataset + linearization of the loss. 
+CIFAR10 with linearization of the loss:
+1 hidden layer with 1500 neurons each.
 
 |  Opt. Method | Epochs | Test accuracy | Training time |
 | ----- | ----- | ----- | ----- |
@@ -84,7 +91,8 @@ The following results are obtained on a multi-layer-perceptron with 1 hidden lay
 (alpha =2, gamma =0.2)
 
 
-The following results are obtained on a multi-layer-perceptron with 1 hidden layer with 1500 neurons each and using the MNIST Dataset without linearization of the loss. 
+MNIST Dataset without linearization of the loss:
+1 hidden layer with 1500 neurons each.
 
 |  Opt. Method | Epochs | Test accuracy | Training time |
 | ----- | ----- | ----- | ----- |
@@ -92,7 +100,9 @@ The following results are obtained on a multi-layer-perceptron with 1 hidden lay
 | Adam  |   20    | 98 % | 115 s |
 | Block Coordinate Descent | 38 | 96.15% | 52s |
 
-The following results are obtained on a multi-layer-perceptron with 1 hidden layer with 1500 neurons each and using the F-MNIST Dataset without linearization of the loss. 
+FASHION-MNIST without linearization of the loss:
+1 hidden layer with 1500 neurons each.
+(alpha =2, gamma = 1.8)
 
 |  Opt. Method | Epochs | Test accuracy | Training time |
 | ----- | ----- | ----- | ----- |
@@ -100,17 +110,16 @@ The following results are obtained on a multi-layer-perceptron with 1 hidden lay
 | Adam  |       |  |  |
 | Block Coordinate Descent | 28 | 86.63% | 38.75s |
 
-(alpha =2, gamma = 1.8)
+CIFAR10 without linearization of the loss:
+1 hidden layer with 1500 neurons each.
+(alpha =7, gamma = 0.2)
 
-The following results are obtained on a multi-layer-perceptron with 1 hidden layer with 1500 neurons each and using the CIFAR10 Dataset without linearization of the loss. 
 
 |  Opt. Method | Epochs | Test accuracy | Training time |
 | ----- | ----- | ----- | ----- |
 | SGD   |       |  |  |
 | Adam  |       |  |  |
 | Block Coordinate Descent | 42 | 43.80% | 155.97s |
-
-(alpha =7, gamma = 0.2)
 
 # Remark
 1. From the first update rule of the paper we see that the size of <img src="https://latex.codecogs.com/gif.latex?\alpha/> cannot be negligable otherswise the constraint that enforces the non-linear function <img src="https://latex.codecogs.com/gif.latex? V = \sigma(U) /> will be neglected. This probably allows the network to go in a bizarre direction and creates problems.
