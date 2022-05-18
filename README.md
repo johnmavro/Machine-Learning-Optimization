@@ -8,8 +8,8 @@ This repository contains the implementation of the Block Coordinate Descent and 
 ## Requirements
 
 ## Reproducibility
-https://colab.research.google.com/drive/1mpsunyV-11yDXPhZLznryLxJoMx4Zqxd
-TO BE ADDED FOR COORDINATE DESCENT
+- https://colab.research.google.com/drive/1mpsunyV-11yDXPhZLznryLxJoMx4Zqxd
+- TO BE ADDED FOR COORDINATE DESCENT
 
 ## Coordinate Descent
 
