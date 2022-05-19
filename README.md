@@ -18,7 +18,7 @@ This repository contains the implementation of the Block Coordinate Descent and 
 ## Frank Wolfe
 
 ### Results
-<img src="accuracies.jpg" width=128>
+<img src="accuracies.jpg" width="128"/>
 
 ## Authors
 - Federico Betti
