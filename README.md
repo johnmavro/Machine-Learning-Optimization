@@ -8,8 +8,7 @@ This repository contains the implementation of the Block Coordinate Descent and 
 ## Requirements
 
 ## Reproducibility
-- "[Colab Notebook for the experiments on Frank Wolfe]" "(https://colab.research.google.com/drive/1mpsunyV-11yDXPhZLznryLxJoMx4Zqxd)"
-- "[Colab Notebook for the experiments on Coordinate Descent]" "(TO BE ADDED FOR COORDINATE DESCENT)"
+- [Colab Notebook for the experiments on Frank Wolfe]: https://colab.research.google.com/drive/1mpsunyV-11yDXPhZLznryLxJoMx4Zqxd
 
 ## Coordinate Descent
 
