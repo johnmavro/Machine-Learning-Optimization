@@ -1,3 +1,7 @@
+# Machine-Learning-Optimization
+
+TODO
+=======
 # Optimization for Machine Learning Project
 This repository contains the implementation of the Block Coordinate Descent and of the Deep Frank Wolfe algorithm in Pytorch. The work is inspired by the two papers  [Deep Frank-Wolfe for Neural Network Optimization](https://arxiv.org/pdf/1811.07591.pdf) and [Accelerated Coordinate Descent with Adaptive Coordinate Frequencies](http://proceedings.mlr.press/v29/Glasmachers13.pdf).
 
