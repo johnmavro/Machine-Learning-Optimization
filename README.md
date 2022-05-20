@@ -123,5 +123,5 @@ The folder **block_coordinate_figures**: contains the figures obtained by plotti
 | Block Coordinate Descent | 42 | 43.80% | 155.97s |
 
 # Remark
-1. From the first update rule of the paper we see that the size of <img src="https://latex.codecogs.com/gif.latex?\alpha/> cannot be negligable otherswise the constraint that enforces the non-linear function <img src="https://latex.codecogs.com/gif.latex? V = \sigma(U) /> will be neglected. This probably allows the network to go in a bizarre direction and creates problems.
-2. From the second update of the paper we see that the relative size of <img src="https://latex.codecogs.com/gif.latex?\alpha/> and - <img src="https://latex.codecogs.com/gif.latex?\gamma/> needs to be large enough for the same reason.
+1. From the first update rule of the paper we see that the size of <img src=""https://render.githubusercontent.com/render/math?math=\alpha/> cannot be negligable otherswise the constraint that enforces the non-linear function <img src=""https://render.githubusercontent.com/render/math?math=V = \sigma(U)" /> will be neglected. This probably allows the network to go in a bizarre direction and creates problems.
+2. From the second update of the paper we see that the relative size of <img src="https://latex.codecogs.com/gif.latex?\alpha/> and - <img src=""https://render.githubusercontent.com/render/math?math=\gamma/> needs to be large enough for the same reason.
