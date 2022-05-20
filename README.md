@@ -113,7 +113,7 @@ The folder **block_coordinate_figures**: contains the figures obtained by plotti
 
 -CIFAR10 without linearization of the loss:
 1 hidden layer with 1500 neurons each.
-(alpha =7, gamma = 0.2)
+( <img src="https://render.githubusercontent.com/render/math?math=\alpha=7"/>,  <img src="https://render.githubusercontent.com/render/math?math=\gamma=0.2"/>)
 
 
 |  Opt. Method | Epochs | Test accuracy | Training time |
@@ -124,4 +124,4 @@ The folder **block_coordinate_figures**: contains the figures obtained by plotti
 
 # Remark
 1. From the first update rule of the paper we see that the size of <img src="https://render.githubusercontent.com/render/math?math=\alpha"/> cannot be negligable otherswise the constraint that enforces the non-linear function <img src="https://render.githubusercontent.com/render/math?math=V = \sigma(U)" /> will be neglected. This probably allows the network to go in a bizarre direction and creates problems.
-2. From the second update of the paper we see that the relative size of <img src="https://render.githubusercontent.com/render/math?math=\alpha"/> and - <img src="https://render.githubusercontent.com/render/math?math=\gamma"/> needs to be large enough for the same reason.
+2. From the second update of the paper we see that the relative size of <img src="https://render.githubusercontent.com/render/math?math=\alpha"/> and <img src="https://render.githubusercontent.com/render/math?math=\gamma"/> needs to be large enough for the same reason.
