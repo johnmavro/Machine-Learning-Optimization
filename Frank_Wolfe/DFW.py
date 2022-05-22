@@ -17,8 +17,8 @@ class DFW(optim.Optimizer):
         eps (float, optional): small constant for numerical stability (default: 1e-5)
     """
 
-    def __init__(self, params, eta=1e-3, momentum=0.9, weight_decay=0.9, eps=1e-5, name="DFW",
-                 lambda_=0, tol=1e-3, num_prox_iterates=3):
+    def __init__(self, params, eta=1e-3, momentum=0.9, weight_decay=0, eps=1e-5, name="DFW",
+                 lambda_=0, tol=1e2, bool_prox=False):
 
         # check on the learning rate
         if eta <= 0.0:
@@ -35,10 +35,10 @@ class DFW(optim.Optimizer):
         # setting parameters
         self.eps = eps
         self.name = name
+        self.bool_prox = bool_prox
 
         self.lambda_ = lambda_
         self.tol = tol
-        self.num_prox_iterates = num_prox_iterates
 
         # defaults dictionary initialization
         defaults = dict(eta=eta, momentum=momentum, weight_decay=weight_decay)
@@ -64,7 +64,8 @@ class DFW(optim.Optimizer):
                 w_dict[param]['r_t'] = wd * param.data
 
         criterion = MultiClassHingeLoss()
-        self._line_search(loss, w_dict, criterion, self.num_prox_iterates, model, batch_x, batch_y)
+        iters = 2
+        self._line_search(loss, w_dict, criterion, iters, model, batch_x, batch_y)
 
     @torch.autograd.no_grad()
     def _line_search(self, loss, w_dict, criterion, iters, model, batch_x, batch_y):
@@ -84,9 +85,9 @@ class DFW(optim.Optimizer):
                 num -= eta * torch.sum(delta_t * r_t)
                 denom += eta * delta_t.norm() ** 2
                 w_0_dict[param] = param.data
-            
+
         self.gamma = float((num / (denom + self.eps)).clamp(min=0, max=1))
-        
+
         for group in self.param_groups:
             eta = group['eta']
             mu = group['momentum']
@@ -103,12 +104,13 @@ class DFW(optim.Optimizer):
                     z_t *= mu
                     z_t -= eta * self.gamma * (delta_t + r_t)
                     param.data += mu * z_t
-        
+
         self.lambda_ = self.gamma * loss
         prediction = model(batch_x)
         current_loss = criterion(prediction, batch_y)
-        if abs(loss-current_loss) / abs(loss) <= self.tol:  # 10e-4 alternates
-            print('More than one step')
+        if abs(loss) <= self.tol:  # 10e-4 alternates  # TODO: CHOOSE BETTER CRITERION
+            self.bool_prox = True
+            print("Setting bool_prox to true")
             for iteration in range(iters):
                 for group in self.param_groups:
                     wd = group['weight_decay']
