@@ -1,6 +1,7 @@
 import torch
 import torch.optim as optim
 import torch.nn as nn
+from Frank_Wolfe.MultiClassHingeLoss import *
 
 from collections import defaultdict
 
@@ -16,7 +17,8 @@ class DFW(optim.Optimizer):
         eps (float, optional): small constant for numerical stability (default: 1e-5)
     """
 
-    def __init__(self, params, eta=1e-3, momentum=0, weight_decay=0, eps=1e-5, name="DFW", lambda_=0, tol=1e-2):
+    def __init__(self, params, eta=1e-3, momentum=0.9, weight_decay=0.9, eps=1e-5, name="DFW",
+                 lambda_=0, tol=1e-3, num_prox_iterates=3):
 
         # check on the learning rate
         if eta <= 0.0:
@@ -33,10 +35,10 @@ class DFW(optim.Optimizer):
         # setting parameters
         self.eps = eps
         self.name = name
-        
-        # dual variable
+
         self.lambda_ = lambda_
         self.tol = tol
+        self.num_prox_iterates = num_prox_iterates
 
         # defaults dictionary initialization
         defaults = dict(eta=eta, momentum=momentum, weight_decay=weight_decay)
@@ -60,10 +62,9 @@ class DFW(optim.Optimizer):
                     continue
                 w_dict[param]['delta_t'] = param.grad.data
                 w_dict[param]['r_t'] = wd * param.data
-        
-        iters = 3
-        criterion = nn.CrossEntropyLoss()
-        self._line_search(loss, w_dict, criterion, iters, model, batch_x, batch_y)
+
+        criterion = MultiClassHingeLoss()
+        self._line_search(loss, w_dict, criterion, self.num_prox_iterates, model, batch_x, batch_y)
 
     @torch.autograd.no_grad()
     def _line_search(self, loss, w_dict, criterion, iters, model, batch_x, batch_y):
@@ -72,13 +73,13 @@ class DFW(optim.Optimizer):
         """
         num = loss
         denom = 0
+
         w_0_dict = {}
         for group in self.param_groups:
             eta = group['eta']
             for param in group['params']:
                 if param.grad is None:
                     continue
-                #print(param.data.size(dim=0))
                 delta_t, r_t = w_dict[param]['delta_t'], w_dict[param]['r_t']
                 num -= eta * torch.sum(delta_t * r_t)
                 denom += eta * delta_t.norm() ** 2
@@ -103,17 +104,16 @@ class DFW(optim.Optimizer):
                     z_t -= eta * self.gamma * (delta_t + r_t)
                     param.data += mu * z_t
         
-        self.lambda_ = (self.gamma)*loss        
+        self.lambda_ = self.gamma * loss
         prediction = model(batch_x)
         current_loss = criterion(prediction, batch_y)
-        #print('current_loss =', current_loss)
-        #print('loss=', loss)
-        if abs(loss-current_loss) / abs(loss) <= self.tol*10e-4: # 10e-4 alternates
-            print('we are doing more than one step')
+        if abs(loss-current_loss) / abs(loss) <= self.tol:  # 10e-4 alternates
+            print('More than one step')
             for iteration in range(iters):
                 for group in self.param_groups:
                     wd = group['weight_decay']
                     eta = group['eta']
+                    mu = group['momentum']
                     for param in group['params']:
                         if param.grad is None:
                             continue
@@ -123,16 +123,14 @@ class DFW(optim.Optimizer):
                         delta_t, r_t = w_dict[param]['delta_t'], w_dict[param]['r_t']
                         # param.data -= eta * (r_t + self.gamma * delta_t)
                         w_s = - eta * (delta_t + r_t)
-                        # s_t = param.data.grad
                         pred = model(batch_x)
                         loss = criterion(pred, batch_y)
-                        num = loss - self.lambda_ + (1/eta)*torch.sum((param.data - w_0 - w_s) * (param.data - w_0))
-                        denom = (1/eta)*torch.norm(param.data - w_s - w_0) ** 2
+                        num = loss - self.lambda_ + 1/eta * torch.sum((param.data - w_0 - w_s) * (param.data - w_0))
+                        denom = 1/eta * torch.norm(param.data - w_s - w_0) ** 2
                         self.gamma = float((num / (denom + self.eps)).clamp(min=0, max=1))
-                        param.data = (1-self.gamma)*param.data + self.gamma * (w_s + w_0)
-                        self.lambda_ = (1-self.gamma)* self.lambda_ + (self.gamma) * loss
-                        
-                        
+                        param.data = (1 - self.gamma) * param.data + self.gamma * (w_s + w_0)
+                        self.lambda_ = (1 - self.gamma) * self.lambda_ + self.gamma * loss
+
                         state = self.state[param]
                         if mu:
                             z_t = state['momentum_buffer']
@@ -140,4 +138,4 @@ class DFW(optim.Optimizer):
                             z_t -= eta * self.gamma * (delta_t + r_t)
                             param.data += mu * z_t
         else:
-            print('single step')
+            print('Single step')
