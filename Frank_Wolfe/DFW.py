@@ -1,7 +1,6 @@
 import torch
 import torch.optim as optim
 import torch.nn as nn
-from Frank_Wolfe.MultiClassHingeLoss import *
 
 from collections import defaultdict
 
@@ -62,10 +61,31 @@ class DFW(optim.Optimizer):
                 w_dict[param]['delta_t'] = param.grad.data
                 w_dict[param]['r_t'] = wd * param.data
         
-        iters = 0
-        criterion = MultiClassHingeLoss()
+        iters = 3
+        criterion = nn.CrossEntropyLoss()
         self._line_search(loss, w_dict, criterion, iters, model, batch_x, batch_y)
 
+    @torch.autograd.no_grad()
+    def _line_search(self, loss, w_dict, criterion, iters, model, batch_x, batch_y):
+        """
+        Computes the line search in closed form.
+        """
+        num = loss
+        denom = 0
+        w_0_dict = {}
+        for group in self.param_groups:
+            eta = group['eta']
+            for param in group['params']:
+                if param.grad is None:
+                    continue
+                #print(param.data.size(dim=0))
+                delta_t, r_t = w_dict[param]['delta_t'], w_dict[param]['r_t']
+                num -= eta * torch.sum(delta_t * r_t)
+                denom += eta * delta_t.norm() ** 2
+                w_0_dict[param] = param.data
+            
+        self.gamma = float((num / (denom + self.eps)).clamp(min=0, max=1))
+        
         for group in self.param_groups:
             eta = group['eta']
             mu = group['momentum']
@@ -82,49 +102,42 @@ class DFW(optim.Optimizer):
                     z_t *= mu
                     z_t -= eta * self.gamma * (delta_t + r_t)
                     param.data += mu * z_t
-
-    @torch.autograd.no_grad()
-    def _line_search(self, loss, w_dict, criterion, iters, model, batch_x, batch_y):
-        """
-        Computes the line search in closed form.
-        """
-        num = loss
-        denom = 0
-        w_0_dict = {}
-        for group in self.param_groups:
-            eta = group['eta']
-            for param in group['params']:
-                if param.grad is None:
-                    continue
-                delta_t, r_t = w_dict[param]['delta_t'], w_dict[param]['r_t']
-                num -= eta * torch.sum(delta_t * r_t)
-                denom += eta * delta_t.norm() ** 2
-                w_0_dict[param] = param.data
-            
-        self.gamma = float((num / (denom + self.eps)).clamp(min=0, max=1))
-        # param.data -= eta * (r_t + self.gamma * delta_t)
-        self.lambda_ = (self.gamma/eta)*loss
         
+        self.lambda_ = (self.gamma)*loss        
         prediction = model(batch_x)
         current_loss = criterion(prediction, batch_y)
-        if abs(loss-current_loss) / abs(loss) <= self.tol: 
+        #print('current_loss =', current_loss)
+        #print('loss=', loss)
+        if abs(loss-current_loss) / abs(loss) <= self.tol*10e-4: # 10e-4 alternates
+            print('we are doing more than one step')
             for iteration in range(iters):
-                print('******* Solving iteration', iteration, 'of the proximal *********')
                 for group in self.param_groups:
+                    wd = group['weight_decay']
                     eta = group['eta']
                     for param in group['params']:
                         if param.grad is None:
                             continue
                         w_0 = w_0_dict[param]
+                        w_dict[param]['delta_t'] = param.grad.data
+                        w_dict[param]['r_t'] = wd * param.data
                         delta_t, r_t = w_dict[param]['delta_t'], w_dict[param]['r_t']
-                        param.data -= eta * (r_t + self.gamma * delta_t)
+                        # param.data -= eta * (r_t + self.gamma * delta_t)
                         w_s = - eta * (delta_t + r_t)
+                        # s_t = param.data.grad
                         pred = model(batch_x)
                         loss = criterion(pred, batch_y)
-                        num = loss - eta * self.lambda_ + torch.sum((param.data - w_0 - w_s) * (param.data - w_0))
-                        denom = torch.norm(param.data - w_s - w_0) ** 2  # TODO: RE-ADD WO IN THE UPDATE
+                        num = loss - self.lambda_ + (1/eta)*torch.sum((param.data - w_0 - w_s) * (param.data - w_0))
+                        denom = (1/eta)*torch.norm(param.data - w_s - w_0) ** 2
                         self.gamma = float((num / (denom + self.eps)).clamp(min=0, max=1))
-                        param.data *= (1-self.gamma)
-                        param.data += self.gamma * (w_s + w_0)  # TODO: RE-ADD WO IN THE UPDATE
-                        self.lambda_ *= (1-self.gamma)
-                        self.lambda_ += (self.gamma/eta) * loss
+                        param.data = (1-self.gamma)*param.data + self.gamma * (w_s + w_0)
+                        self.lambda_ = (1-self.gamma)* self.lambda_ + (self.gamma) * loss
+                        
+                        
+                        state = self.state[param]
+                        if mu:
+                            z_t = state['momentum_buffer']
+                            z_t *= mu
+                            z_t -= eta * self.gamma * (delta_t + r_t)
+                            param.data += mu * z_t
+        else:
+            print('single step')
