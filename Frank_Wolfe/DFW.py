@@ -64,8 +64,24 @@ class DFW(optim.Optimizer):
                 w_dict[param]['r_t'] = wd * param.data
 
         criterion = MultiClassHingeLoss()
-        iters = 2
+        iters = 0
         self._line_search(loss, w_dict, criterion, iters, model, batch_x, batch_y)
+
+        for group in self.param_groups:
+            eta = group['eta']
+            mu = group['momentum']
+            for param in group['params']:
+                if param.grad is None:
+                    continue
+                state = self.state[param]
+                delta_t, r_t = w_dict[param]['delta_t'], w_dict[param]['r_t']
+
+                param.data -= eta * (r_t + self.gamma * delta_t)
+
+                if mu:
+                    z_t = state['momentum_buffer']
+                    z_t *= mu
+                    z_t -= eta * self.gamma * (delta_t + r_t)
 
     @torch.autograd.no_grad()
     def _line_search(self, loss, w_dict, criterion, iters, model, batch_x, batch_y):
@@ -88,56 +104,56 @@ class DFW(optim.Optimizer):
 
         self.gamma = float((num / (denom + self.eps)).clamp(min=0, max=1))
 
-        for group in self.param_groups:
-            eta = group['eta']
-            mu = group['momentum']
-            for param in group['params']:
-                if param.grad is None:
-                    continue
-                state = self.state[param]
-                delta_t, r_t = w_dict[param]['delta_t'], w_dict[param]['r_t']
-
-                param.data -= eta * (r_t + self.gamma * delta_t)
-
-                if mu:
-                    z_t = state['momentum_buffer']
-                    z_t *= mu
-                    z_t -= eta * self.gamma * (delta_t + r_t)
-                    param.data += mu * z_t
-
-        self.lambda_ = self.gamma * loss
-        prediction = model(batch_x)
-        current_loss = criterion(prediction, batch_y)
-        if abs(loss) <= self.tol:  # 10e-4 alternates  # TODO: CHOOSE BETTER CRITERION
-            self.bool_prox = True
-            print("Setting bool_prox to true")
-            for iteration in range(iters):
-                for group in self.param_groups:
-                    wd = group['weight_decay']
-                    eta = group['eta']
-                    mu = group['momentum']
-                    for param in group['params']:
-                        if param.grad is None:
-                            continue
-                        w_0 = w_0_dict[param]
-                        w_dict[param]['delta_t'] = param.grad.data
-                        w_dict[param]['r_t'] = wd * param.data
-                        delta_t, r_t = w_dict[param]['delta_t'], w_dict[param]['r_t']
-                        # param.data -= eta * (r_t + self.gamma * delta_t)
-                        w_s = - eta * (delta_t + r_t)
-                        pred = model(batch_x)
-                        loss = criterion(pred, batch_y)
-                        num = loss - self.lambda_ + 1/eta * torch.sum((param.data - w_0 - w_s) * (param.data - w_0))
-                        denom = 1/eta * torch.norm(param.data - w_s - w_0) ** 2
-                        self.gamma = float((num / (denom + self.eps)).clamp(min=0, max=1))
-                        param.data = (1 - self.gamma) * param.data + self.gamma * (w_s + w_0)
-                        self.lambda_ = (1 - self.gamma) * self.lambda_ + self.gamma * loss
-
-                        state = self.state[param]
-                        if mu:
-                            z_t = state['momentum_buffer']
-                            z_t *= mu
-                            z_t -= eta * self.gamma * (delta_t + r_t)
-                            param.data += mu * z_t
-        else:
-            print('Single step')
+        # for group in self.param_groups:
+        #     eta = group['eta']
+        #     mu = group['momentum']
+        #     for param in group['params']:
+        #         if param.grad is None:
+        #             continue
+        #         state = self.state[param]
+        #         delta_t, r_t = w_dict[param]['delta_t'], w_dict[param]['r_t']
+        #
+        #         param.data -= eta * (r_t + self.gamma * delta_t)
+        #
+        #         if mu:
+        #             z_t = state['momentum_buffer']
+        #             z_t *= mu
+        #             z_t -= eta * self.gamma * (delta_t + r_t)
+        #             param.data += mu * z_t
+        #
+        # self.lambda_ = self.gamma * loss
+        # prediction = model(batch_x)
+        # current_loss = criterion(prediction, batch_y)
+        # if abs(loss) <= self.tol:  # 10e-4 alternates  # TODO: CHOOSE BETTER CRITERION
+        #     self.bool_prox = True
+        #     print("Setting bool_prox to true")
+        #     for iteration in range(iters):
+        #         for group in self.param_groups:
+        #             wd = group['weight_decay']
+        #             eta = group['eta']
+        #             mu = group['momentum']
+        #             for param in group['params']:
+        #                 if param.grad is None:
+        #                     continue
+        #                 w_0 = w_0_dict[param]
+        #                 w_dict[param]['delta_t'] = param.grad.data
+        #                 w_dict[param]['r_t'] = wd * param.data
+        #                 delta_t, r_t = w_dict[param]['delta_t'], w_dict[param]['r_t']
+        #                 # param.data -= eta * (r_t + self.gamma * delta_t)
+        #                 w_s = - eta * (delta_t + r_t)
+        #                 pred = model(batch_x)
+        #                 loss = criterion(pred, batch_y)
+        #                 num = loss - self.lambda_ + 1/eta * torch.sum((param.data - w_0 - w_s) * (param.data - w_0))
+        #                 denom = 1/eta * torch.norm(param.data - w_s - w_0) ** 2
+        #                 self.gamma = float((num / (denom + self.eps)).clamp(min=0, max=1))
+        #                 param.data = (1 - self.gamma) * param.data + self.gamma * (w_s + w_0)
+        #                 self.lambda_ = (1 - self.gamma) * self.lambda_ + self.gamma * loss
+        #
+        #                 state = self.state[param]
+        #                 if mu:
+        #                     z_t = state['momentum_buffer']
+        #                     z_t *= mu
+        #                     z_t -= eta * self.gamma * (delta_t + r_t)
+        #                     param.data += mu * z_t
+        # else:
+        #     print('Single step')
