@@ -8,6 +8,8 @@ This repository contains the implementation of the Block Coordinate Descent and 
 * Notebook to do well
 * For all plots, average over 5 runs
 * Investigate possibility of solving more steps of the proximal in the end
+* Adjust Utilities.categorical_accuracy in the code
+* Explain well why another proximal step may help asymptotically
 
 ## Structure
 
