@@ -62,6 +62,7 @@ The folder **block_coordinate_figures**: contains the figures obtained by plotti
 |  Opt. Method | Epochs | Test accuracy | Training time |
 | ----- | ----- | ----- | ----- |
 | SGD   |   50    | 91 % | 282 s |
+| SGD(Scheduler) | 300 | 94 % | 1553.57s |
 | Adam  |   20    | 98 % | 115 s |
 | Block Coordinate Descent | 39 | 96.08 % | 47.83 s |
 
@@ -75,6 +76,7 @@ The folder **block_coordinate_figures**: contains the figures obtained by plotti
 |  Opt. Method | Epochs | Test accuracy | Training time |
 | ----- | ----- | ----- | ----- |
 | SGD   | 100  | 84.63 % | 536.4345s  |
+| SGD(Scheduler) | 300 | 84.25 % | 1532s | 
 | Adam  | 20  | 89.73 %    | 106.0462s    |
 | Block Coordinate Descent | 29 | 86.83 % | 39.26 s |
 
@@ -86,6 +88,7 @@ The folder **block_coordinate_figures**: contains the figures obtained by plotti
 |  Opt. Method | Epochs | Test accuracy | Training time |
 | ----- | ----- | ----- | ----- |
 | SGD   | 100  | 45.52 % | 692.9886s    |
+| SGD(Scheduler) | 300 | 46.11 % | 2043.57s    |
 | Adam  |  20  | 53.41 % | 141.1729s |
 | Block Coordinate Descent | 5 | 41.37% | 9.21 s |
 
