@@ -65,12 +65,29 @@ class DFW(optim.Optimizer):
 
         w_0_dict = self._line_search(loss, w_dict)
 
-        for i in range(self.prox_steps - 1):
+        for group in self.param_groups:
+            eta = group['eta']
+            mu = group['momentum']
+            for param in group['params']:
+                if param.grad is None:
+                    continue
+                state = self.state[param]
+                delta_t, r_t = w_dict[param]['delta_t'], w_dict[param]['r_t']
+
+                param.data -= eta * (r_t + self.gamma * delta_t)
+
+                if mu:
+                    z_t = state['momentum_buffer']
+                    z_t *= mu
+                    z_t -= eta * self.gamma * (delta_t + r_t)
+                    param.data += mu * z_t
+
+        if self.prox_steps > 1:
 
             pred = model(batch_x)
             current_loss = loss_criterion(pred, batch_y)
 
-            w_dict = self._proximal_step(current_loss, w_dict, w_0_dict)
+            self._proximal_step(current_loss, w_dict, w_0_dict)
 
             for group in self.param_groups:
                 eta = group['eta']
@@ -144,5 +161,3 @@ class DFW(optim.Optimizer):
         self.gamma = float((num / (denom + self.eps)).clamp(min=0, max=1))  # update gamma
         self.lambda_ *= (1 - self.gamma)  # update lambda_
         self.lambda_ += self.gamma * loss  # update lambda_
-
-        return w_dict
