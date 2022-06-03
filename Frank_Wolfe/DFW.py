@@ -78,11 +78,13 @@ class DFW(optim.Optimizer):
                 for param in group['params']:
                     if param.grad is None:
                         continue
+                    w_0 = w_0_dict[param]
                     state = self.state[param]
                     delta_t, r_t = w_dict[param]['delta_t'], w_dict[param]['r_t']
 
                     # update weights
-                    param.data -= eta * (r_t + self.gamma * delta_t)
+                    param.data *= (1 - self.gamma)
+                    param.data += self.gamma * (-eta * (delta_t + r_t) + w_0)
 
                     # momentum if present
                     if mu:
