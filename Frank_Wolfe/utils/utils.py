@@ -1,6 +1,5 @@
 import torch
 from tqdm import tqdm
-from Frank_Wolfe.constraints.constraints import *
 import matplotlib.pyplot as plt
 import os
 import torch.nn as nn

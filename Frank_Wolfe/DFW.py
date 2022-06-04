@@ -51,7 +51,7 @@ class DFW(optim.Optimizer):
                     self.state[p]['momentum_buffer'] = torch.zeros_like(p.data, requires_grad=False)
 
     @torch.autograd.no_grad()
-    def step(self, closure, model, loss_criterion, batch_x, batch_y):
+    def step(self, closure, model, batch_x, batch_y):
         loss = float(closure())
 
         w_dict = defaultdict(dict)
@@ -62,6 +62,8 @@ class DFW(optim.Optimizer):
                     continue
                 w_dict[param]['delta_t'] = param.grad.data
                 w_dict[param]['r_t'] = wd * param.data
+
+        criterion = MultiClassHingeLoss()
 
         w_0_dict = self._line_search(loss, w_dict)
 
@@ -74,21 +76,22 @@ class DFW(optim.Optimizer):
                 state = self.state[param]
                 delta_t, r_t = w_dict[param]['delta_t'], w_dict[param]['r_t']
 
+                # update weights
                 param.data -= eta * (r_t + self.gamma * delta_t)
 
+                # momentum if present
                 if mu:
                     z_t = state['momentum_buffer']
                     z_t *= mu
                     z_t -= eta * self.gamma * (delta_t + r_t)
                     param.data += mu * z_t
 
-        if self.prox_steps > 1:
+        for i in range(self.prox_steps-1):
+            pred = model.train()(batch_x)
+            loss = criterion(pred, batch_y)
+            self._proximal_step(loss, w_dict, w_0_dict)
 
-            pred = model(batch_x)
-            current_loss = loss_criterion(pred, batch_y)
-
-            self._proximal_step(current_loss, w_dict, w_0_dict)
-
+            # update the network
             for group in self.param_groups:
                 eta = group['eta']
                 mu = group['momentum']
@@ -136,11 +139,12 @@ class DFW(optim.Optimizer):
         return w_0_dict
 
     @torch.autograd.no_grad()
-    def _proximal_step(self, closure, w_dict, w_0_dict):
+    def _proximal_step(self, loss, w_dict, w_0_dict):
         """
         Computes a non-trivial proximal step
         """
-        loss = float(closure())
+
+        # at each iteration, calculate the prediction on a batch and set the numerator to be the current loss
         num = loss
         denom = 0
         for group in self.param_groups:
@@ -159,5 +163,6 @@ class DFW(optim.Optimizer):
 
         num -= self.lambda_  # since lambda_ is not zero now
         self.gamma = float((num / (denom + self.eps)).clamp(min=0, max=1))  # update gamma
-        self.lambda_ *= (1 - self.gamma)  # update lambda_
+        # update lambda_
+        self.lambda_ *= (1 - self.gamma)
         self.lambda_ += self.gamma * loss  # update lambda_
