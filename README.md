@@ -22,13 +22,13 @@ This repository contains the implementation of the Block Coordinate Descent and 
     - [ ] CIFAR100
        - [ ] DFW single step
        - [ ] DFW multi step
-       - [ ] Adam
+       - [x] Adam
        - [ ] SGD with scheduler
 - [ ] WideResNext
    - [ ] CIFAR10
        - [x] DFW single step
        - [ ] DFW multi step
-       - [ ] Adam
+       - [x] Adam
        - [ ] SGD with scheduler
     - [ ] CIFAR100
        - [ ] DFW single step
