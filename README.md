@@ -14,7 +14,7 @@ This repository contains the implementation of the Block Coordinate Descent and 
        - [ ] Adam
        - [ ] SGD with scheduler
 - [ ] DenseNet
-   - [ ] CIFAR10
+   - [x] CIFAR10
        - [x] DFW single step
        - [x] DFW multi step
        - [x] Adam
@@ -26,7 +26,7 @@ This repository contains the implementation of the Block Coordinate Descent and 
        - [ ] SGD with scheduler
 - [ ] WideResNext
    - [ ] CIFAR10
-       - [ ] DFW single step
+       - [x] DFW single step
        - [ ] DFW multi step
        - [ ] Adam
        - [ ] SGD with scheduler
@@ -35,7 +35,7 @@ This repository contains the implementation of the Block Coordinate Descent and 
        - [ ] DFW multi step
        - [ ] Adam
        - [ ] SGD with scheduler
-- [ ] ResNet
+- [ ] ResNet (?)
    - [ ] CIFAR10
        - [ ] DFW single step
        - [ ] DFW multi step
