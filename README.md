@@ -11,7 +11,7 @@ This repository contains the implementation of the Block Coordinate Descent and 
     - [ ] CIFAR100
        - [ ] DFW single step
        - [ ] DFW multi step
-       - [ ] Adam
+       - [x] Adam
        - [ ] SGD with scheduler
 - [ ] DenseNet
    - [x] CIFAR10
