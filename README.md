@@ -40,7 +40,7 @@ This repository contains the implementation of the Block Coordinate Descent and 
        - [ ] DFW single step
        - [ ] DFW multi step
        - [ ] Adam
-       - [ ] SGD with scheduler
+       - [x] SGD with scheduler
     - [ ] CIFAR100
        - [ ] DFW single step
        - [ ] DFW multi step
