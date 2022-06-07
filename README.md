@@ -24,7 +24,7 @@ This repository contains the implementation of the Block Coordinate Descent and 
        - [x] SGD with scheduler
     - [ ] CIFAR100
        - [x] DFW single step
-       - [ ] DFW multi step (Luca)
+       - [ ] DFW multi step (Luca) RUNNING
        - [ ] Adam (Fede)
        - [x] SGD with scheduler
 
