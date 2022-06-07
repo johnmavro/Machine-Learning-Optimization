@@ -5,7 +5,7 @@ This repository contains the implementation of the Block Coordinate Descent and 
 - [ ] GoogLeNet
    - [x] CIFAR10
    - [ ] CIFAR100
-      - [ ] DFW single step (Fede) RUNNING
+      - [x] DFW single step
       - [ ] DFW multi step  (Fede)
       - [x] Adam
       - [ ] SGD with scheduler (Fede)
