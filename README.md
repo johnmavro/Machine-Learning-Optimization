@@ -3,27 +3,19 @@ This repository contains the implementation of the Block Coordinate Descent and 
 
 ## TODO
 - [ ] GoogLeNet
-   - [ ] CIFAR10
-       - [x] DFW single step
-       - [x] DFW multi step
-       - [x] Adam
-       - [x] SGD with scheduler
-    - [ ] CIFAR100
-       - [ ] DFW single step
-       - [ ] DFW multi step
-       - [x] Adam
-       - [ ] SGD with scheduler
+   - [x] CIFAR10
+   - [ ] CIFAR100
+      - [ ] DFW single step
+      - [ ] DFW multi step
+      - [x] Adam
+      - [ ] SGD with scheduler
 - [ ] DenseNet
    - [x] CIFAR10
-       - [x] DFW single step
-       - [x] DFW multi step
-       - [x] Adam
-       - [x] SGD with scheduler
-    - [ ] CIFAR100
-       - [x] DFW single step
-       - [ ] DFW multi step
-       - [x] Adam
-       - [ ] SGD with scheduler
+   - [ ] CIFAR100
+      - [x] DFW single step
+      - [ ] DFW multi step
+      - [x] Adam
+      - [ ] SGD with scheduler
 - [ ] WideResNext
    - [ ] CIFAR10
        - [x] DFW single step
@@ -46,9 +38,6 @@ This repository contains the implementation of the Block Coordinate Descent and 
        - [ ] DFW multi step
        - [ ] Adam
        - [ ] SGD with scheduler 
-
-* Notebook to do welL
-* Explain well why another proximal step may help
 
 ## Structure
 
