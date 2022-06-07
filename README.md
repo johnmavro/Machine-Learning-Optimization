@@ -24,8 +24,9 @@ This repository contains the implementation of the Block Coordinate Descent and 
 
 ## Frank Wolfe
 #### CIFAR10
-| GoogLeNet |
-|  Opt. Method | Test accuracy (%) |
+| GoogLeNet |      |
+| ----- | ----- |
+|  | Test accuracy (%) |
 | ----- | ----- |
 | SGD (with schedule) | 94 % | 
 | DFW |  % |
