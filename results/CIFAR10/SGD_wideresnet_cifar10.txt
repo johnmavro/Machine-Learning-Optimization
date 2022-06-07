@@ -1,0 +1,513 @@
+Epoch 0/50
+Evaluation of train data:
+50000/50000: [===============================>] - ETA 0.8s
+[0.1]
+Evaluation of test data:
+/usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:136: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  "https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate", UserWarning)
+/usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:372: UserWarning: To get the last learning rate computed by the scheduler, please use `get_last_lr()`.
+  "please use `get_last_lr()`.", UserWarning)
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 0/50: Train Loss 2.3059583012390137 | Test Loss 2.3062709602355955 | Train Acc 0.09698 | Test Acc 0.0921
+Time elapsed for the current epoch 121.77862668037415
+
+Epoch 1/50
+Training:
+50000/50000: [===============================>] - ETA 0.9s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 1/50: Train Loss 1.6294431269073486 | Test Loss 2.0010749769210814 | Train Acc 0.39454 | Test Acc 0.4861
+Time elapsed for the current epoch 378.77684926986694
+
+Epoch 2/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 2/50: Train Loss 1.1066792924690247 | Test Loss 1.491698744392395 | Train Acc 0.60058 | Test Acc 0.5687
+Time elapsed for the current epoch 379.2596890926361
+
+Epoch 3/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 3/50: Train Loss 0.8949480387496949 | Test Loss 1.417812737083435 | Train Acc 0.6825 | Test Acc 0.5973
+Time elapsed for the current epoch 379.27817463874817
+
+Epoch 4/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 4/50: Train Loss 0.745633752117157 | Test Loss 2.0808957233428953 | Train Acc 0.73704 | Test Acc 0.5472
+Time elapsed for the current epoch 379.27685713768005
+
+Epoch 5/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 5/50: Train Loss 0.6389751632499695 | Test Loss 2.316587762069702 | Train Acc 0.77574 | Test Acc 0.4968
+Time elapsed for the current epoch 379.32249784469604
+
+Epoch 6/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 6/50: Train Loss 0.558005156211853 | Test Loss 1.991665880393982 | Train Acc 0.80588 | Test Acc 0.5842
+Time elapsed for the current epoch 379.2990050315857
+
+Epoch 7/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 7/50: Train Loss 0.5015278155899048 | Test Loss 1.2961133065223693 | Train Acc 0.82646 | Test Acc 0.6519
+Time elapsed for the current epoch 379.3243041038513
+
+Epoch 8/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 8/50: Train Loss 0.45632827434539797 | Test Loss 1.1966445598602296 | Train Acc 0.8431 | Test Acc 0.7018
+Time elapsed for the current epoch 379.29985547065735
+
+Epoch 9/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 9/50: Train Loss 0.41114900259017945 | Test Loss 1.2113290048599243 | Train Acc 0.85774 | Test Acc 0.7136
+Time elapsed for the current epoch 379.2631108760834
+
+Epoch 10/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 10/50: Train Loss 0.3770085980415344 | Test Loss 0.7139645279407502 | Train Acc 0.86714 | Test Acc 0.8066
+Time elapsed for the current epoch 379.3712794780731
+
+Epoch 11/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 11/50: Train Loss 0.34585192209243776 | Test Loss 1.267694077205658 | Train Acc 0.8801 | Test Acc 0.7074
+Time elapsed for the current epoch 379.2426266670227
+
+Epoch 12/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 12/50: Train Loss 0.3245845038986206 | Test Loss 0.8561091398239136 | Train Acc 0.887 | Test Acc 0.7828
+Time elapsed for the current epoch 379.33491349220276
+
+Epoch 13/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 13/50: Train Loss 0.2962846826553345 | Test Loss 1.0400342175483703 | Train Acc 0.89766 | Test Acc 0.7489
+Time elapsed for the current epoch 379.3338313102722
+
+Epoch 14/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 14/50: Train Loss 0.27799349880218505 | Test Loss 1.2243726896286011 | Train Acc 0.9022 | Test Acc 0.7207
+Time elapsed for the current epoch 379.3461890220642
+
+Epoch 15/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 15/50: Train Loss 0.25710988086700437 | Test Loss 1.02313527469635 | Train Acc 0.90978 | Test Acc 0.7744
+Time elapsed for the current epoch 379.36039185523987
+
+Epoch 16/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 16/50: Train Loss 0.24277535375595094 | Test Loss 0.5315372848033905 | Train Acc 0.91616 | Test Acc 0.8634
+Time elapsed for the current epoch 379.387793302536
+
+Epoch 17/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 17/50: Train Loss 0.22502283967018127 | Test Loss 0.4906925432682037 | Train Acc 0.92118 | Test Acc 0.865
+Time elapsed for the current epoch 379.36183309555054
+
+Epoch 18/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.1]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 18/50: Train Loss 0.21557405053138734 | Test Loss 0.6089565515041351 | Train Acc 0.92518 | Test Acc 0.8509
+Time elapsed for the current epoch 379.2603015899658
+
+Epoch 19/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.025]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 19/50: Train Loss 0.19783044403076172 | Test Loss 0.7145808208465576 | Train Acc 0.93132 | Test Acc 0.8329
+Time elapsed for the current epoch 379.368864774704
+
+Epoch 20/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 20/50: Train Loss 0.13331147549152375 | Test Loss 0.4512721758171916 | Train Acc 0.95348 | Test Acc 0.8905
+Time elapsed for the current epoch 379.2619426250458
+
+Epoch 21/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 21/50: Train Loss 0.1129347406220436 | Test Loss 0.7649491549491882 | Train Acc 0.96002 | Test Acc 0.845
+Time elapsed for the current epoch 379.2921667098999
+
+Epoch 22/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 22/50: Train Loss 0.1080413911819458 | Test Loss 0.506404364413023 | Train Acc 0.9611 | Test Acc 0.8857
+Time elapsed for the current epoch 379.3110280036926
+
+Epoch 23/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 23/50: Train Loss 0.09786002081871033 | Test Loss 0.5375216376364231 | Train Acc 0.96538 | Test Acc 0.8881
+Time elapsed for the current epoch 379.31050157546997
+
+Epoch 24/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 24/50: Train Loss 0.09421190107345581 | Test Loss 0.679476975607872 | Train Acc 0.96632 | Test Acc 0.8723
+Time elapsed for the current epoch 379.3164792060852
+
+Epoch 25/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 25/50: Train Loss 0.08895876293182373 | Test Loss 0.632679097700119 | Train Acc 0.9681 | Test Acc 0.8806
+Time elapsed for the current epoch 379.3076140880585
+
+Epoch 26/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 26/50: Train Loss 0.08523258194446563 | Test Loss 0.5971769574403762 | Train Acc 0.96962 | Test Acc 0.8796
+Time elapsed for the current epoch 379.398535490036
+
+Epoch 27/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 27/50: Train Loss 0.08019106875658036 | Test Loss 0.7191850182056427 | Train Acc 0.97154 | Test Acc 0.8639
+Time elapsed for the current epoch 379.28030824661255
+
+Epoch 28/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 28/50: Train Loss 0.0772143886166811 | Test Loss 0.6435360021591187 | Train Acc 0.97198 | Test Acc 0.8792
+Time elapsed for the current epoch 379.2571396827698
+
+Epoch 29/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 29/50: Train Loss 0.06874188257694244 | Test Loss 0.7102485901296138 | Train Acc 0.97568 | Test Acc 0.881
+Time elapsed for the current epoch 379.3742642402649
+
+Epoch 30/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 30/50: Train Loss 0.06610575604081154 | Test Loss 0.751918944644928 | Train Acc 0.97636 | Test Acc 0.8744
+Time elapsed for the current epoch 379.35737657546997
+
+Epoch 31/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 31/50: Train Loss 0.0675445046722889 | Test Loss 0.8139386800765991 | Train Acc 0.97614 | Test Acc 0.8675
+Time elapsed for the current epoch 379.37191581726074
+
+Epoch 32/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 32/50: Train Loss 0.06054110006093979 | Test Loss 0.633511285686493 | Train Acc 0.97902 | Test Acc 0.8897
+Time elapsed for the current epoch 379.4126007556915
+
+Epoch 33/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 33/50: Train Loss 0.058735363010168073 | Test Loss 0.7798283323764801 | Train Acc 0.97922 | Test Acc 0.8742
+Time elapsed for the current epoch 379.2783098220825
+
+Epoch 34/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 34/50: Train Loss 0.05751070900917053 | Test Loss 0.7060909385204315 | Train Acc 0.98008 | Test Acc 0.8885
+Time elapsed for the current epoch 379.2011389732361
+
+Epoch 35/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 35/50: Train Loss 0.054340902349948886 | Test Loss 0.7485618048667908 | Train Acc 0.98114 | Test Acc 0.8797
+Time elapsed for the current epoch 379.37065505981445
+
+Epoch 36/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 36/50: Train Loss 0.05309685772895813 | Test Loss 0.7165684999585151 | Train Acc 0.98128 | Test Acc 0.8844
+Time elapsed for the current epoch 379.397901058197
+
+Epoch 37/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 37/50: Train Loss 0.0519470219039917 | Test Loss 0.5951834916114808 | Train Acc 0.98146 | Test Acc 0.9017
+Time elapsed for the current epoch 379.3127210140228
+
+Epoch 38/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.05]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 38/50: Train Loss 0.047450233854055404 | Test Loss 0.649437966299057 | Train Acc 0.98334 | Test Acc 0.897
+Time elapsed for the current epoch 379.34771704673767
+
+Epoch 39/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.0125]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 39/50: Train Loss 0.04345949983358383 | Test Loss 0.7244053975105286 | Train Acc 0.98418 | Test Acc 0.8878
+Time elapsed for the current epoch 379.333300113678
+
+Epoch 40/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.025]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 40/50: Train Loss 0.02521904350697994 | Test Loss 0.6332057238101959 | Train Acc 0.9918 | Test Acc 0.9037
+Time elapsed for the current epoch 378.9566502571106
+
+Epoch 41/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.025]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 41/50: Train Loss 0.017097370392382145 | Test Loss 0.7106478739500046 | Train Acc 0.99502 | Test Acc 0.8914
+Time elapsed for the current epoch 371.0192725658417
+
+Epoch 42/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.025]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 42/50: Train Loss 0.01497483176767826 | Test Loss 0.6425874536037445 | Train Acc 0.99578 | Test Acc 0.9054
+Time elapsed for the current epoch 370.93739342689514
+
+Epoch 43/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.025]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 43/50: Train Loss 0.01384639614611864 | Test Loss 0.7276626076221466 | Train Acc 0.99596 | Test Acc 0.8964
+Time elapsed for the current epoch 370.8578977584839
+
+Epoch 44/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.025]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 44/50: Train Loss 0.011351403774917126 | Test Loss 0.6961520611286164 | Train Acc 0.9967 | Test Acc 0.9
+Time elapsed for the current epoch 374.88362407684326
+
+Epoch 45/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.025]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 45/50: Train Loss 0.011596264478191733 | Test Loss 0.6779245083332062 | Train Acc 0.99654 | Test Acc 0.9057
+Time elapsed for the current epoch 370.89706540107727
+
+Epoch 46/50
+Training:
+50000/50000: [===============================>] - ETA 0.9s
+[0.025]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 46/50: Train Loss 0.012411154526919127 | Test Loss 0.8006906080722809 | Train Acc 0.99608 | Test Acc 0.8922
+Time elapsed for the current epoch 370.9554753303528
+
+Epoch 47/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.025]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 47/50: Train Loss 0.0116923852160573 | Test Loss 0.7438823742866516 | Train Acc 0.99614 | Test Acc 0.8983
+Time elapsed for the current epoch 375.51240062713623
+
+Epoch 48/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.025]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 48/50: Train Loss 0.010393162689656019 | Test Loss 0.802883628988266 | Train Acc 0.99692 | Test Acc 0.8941
+Time elapsed for the current epoch 370.9418683052063
+
+Epoch 49/50
+Training:
+50000/50000: [===============================>] - ETA 1.0s
+[0.025]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 49/50: Train Loss 0.01059803116798401 | Test Loss 0.8493080934524536 | Train Acc 0.99648 | Test Acc 0.8898
+Time elapsed for the current epoch 370.86196756362915
+
+Epoch 50/50
+Training:
+50000/50000: [===============================>] - ETA 0.9s
+[0.025]
+Evaluation of test data:
+10000/10000: [===============================>] - ETA 0.3s
+
+ Finished epoch 50/50: Train Loss 0.009760665091499686 | Test Loss 0.892841177034378 | Train Acc 0.99692 | Test Acc 0.8856
+Time elapsed for the current epoch 370.9095687866211
