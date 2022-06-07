@@ -27,7 +27,6 @@ This repository contains the implementation of the Block Coordinate Descent and 
 | GoogLeNet |      |
 | ----- | ----- |
 |  | Test accuracy (%) |
-| ----- | ----- |
 | SGD (with schedule) | 94 % | 
 | DFW |  % |
 | DFW multistep |  92.13 | 
