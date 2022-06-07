@@ -6,10 +6,9 @@ This repository contains the implementation of the Block Coordinate Descent and 
   * `utils` - Contains utilities to load data-sets, normalize batches and other tasks
   * `architectures.py` - Contains the implementation of architectures used for the empirical experiments
   * `MultiClassHingeLoss.py` - Contains the implementation of the multi-class Hinge Loss as described in the original DFW paper
+  * `DFW.py` - Implementation of the DFW optimizer in Pytorch
 * `results` - Contains the Python dictionaries with the results
 *  `DFW.ipynb` - Notebook for reproducibility of the results concerning Deep Frank-Wolfe 
-
-## Instructions
 
 ## Requirements
 
@@ -18,12 +17,24 @@ This repository contains the implementation of the Block Coordinate Descent and 
 - [Colab Notebook for Block Coordinate Descent](https://colab.research.google.com/drive/1mpsunyV-11yDXPhZLznryLxJoMx4Zqxd) TODO
 
 ## Coordinate Descent
+#### FASHION-MNIST
 
-### Results
+
+#### CIFAR10
 
 ## Frank Wolfe
+#### CIFAR10
+| GoogLeNet |
+|  Opt. Method | Test accuracy (%) |
+| ----- | ----- |
+| SGD (with schedule) | 94 % | 
+| DFW |  % |
+| DFW multistep |  92.13 | 
+| Adam  | 90.20 |
 
-### Results
+
+#### CIFAR100
+
 
 ## Authors
 - Federico Betti
@@ -38,6 +49,7 @@ This repository contains the implementation of the Block Coordinate Descent and 
 - [ ] DenseNet
    - [ ] CIFAR100
       - [ ] DFW multi step (Luca)
+      - [ ] SGD with scheduler (Luca)
 - [ ] WideResNext
    - [ ] CIFAR10
        - [ ] DFW multi step (Fede)
