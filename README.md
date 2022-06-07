@@ -55,4 +55,3 @@ This repository contains the implementation of the Block Coordinate Descent and 
        - [ ] DFW multi step (Fede)
    - [ ] CIFAR100
        - [ ] DFW multi step (Luca) RUNNING
-       - [ ] Adam (Fede) RUNNING
