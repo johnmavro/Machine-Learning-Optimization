@@ -23,7 +23,7 @@ This repository contains the implementation of the Block Coordinate Descent and 
        - [x] Adam
        - [x] SGD with scheduler
     - [ ] CIFAR100
-       - [ ] DFW single step (Fede) RUNNING
+       - [x] DFW single step
        - [ ] DFW multi step (Luca)
        - [ ] Adam (Fede)
        - [ ] SGD with scheduler (Luca) RUNNING
@@ -36,7 +36,7 @@ This repository contains the implementation of the Block Coordinate Descent and 
 
 ## Reproducibility
 - [Colab Notebook for Deep Frank-Wolfe](https://colab.research.google.com/drive/1mpsunyV-11yDXPhZLznryLxJoMx4Zqxd)
-- [Colab Notebook for Block Coordinate Descent](https://colab.research.google.com/drive/1mpsunyV-11yDXPhZLznryLxJoMx4Zqxd) NOTE: TODO
+- [Colab Notebook for Block Coordinate Descent](https://colab.research.google.com/drive/1mpsunyV-11yDXPhZLznryLxJoMx4Zqxd) TODO
 
 ## Coordinate Descent
 
