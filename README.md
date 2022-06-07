@@ -19,7 +19,7 @@ This repository contains the implementation of the Block Coordinate Descent and 
 - [ ] WideResNext
    - [ ] CIFAR10
        - [x] DFW single step
-       - [ ] DFW multi step (Fede)
+       - [ ] DFW multi step (Fede) RUNNING
        - [x] Adam
        - [x] SGD with scheduler
     - [ ] CIFAR100
