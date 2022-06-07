@@ -38,7 +38,6 @@ This repository contains the implementation of the Block Coordinate Descent and 
 - [ ] DenseNet
    - [ ] CIFAR100
       - [ ] DFW multi step (Luca)
-      - [ ] SGD with scheduler (Luca)
 - [ ] WideResNext
    - [ ] CIFAR10
        - [ ] DFW multi step (Fede)
