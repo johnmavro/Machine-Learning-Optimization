@@ -15,18 +15,18 @@ This repository contains the implementation of the Block Coordinate Descent and 
       - [x] DFW single step
       - [ ] DFW multi step
       - [x] Adam
-      - [ ] SGD with scheduler (Luca) DONE
+      - [ ] SGD with scheduler (Luca)
 - [ ] WideResNext
    - [ ] CIFAR10
        - [x] DFW single step
        - [ ] DFW multi step (Fede)
        - [x] Adam
-       - [ ] SGD with scheduler (Luca) DONE
+       - [x] SGD with scheduler
     - [ ] CIFAR100
        - [ ] DFW single step (Fede) RUNNING
        - [ ] DFW multi step (Luca)
        - [ ] Adam (Fede)
-       - [ ] SGD with scheduler (Luca)
+       - [ ] SGD with scheduler (Luca) RUNNING
 - [ ] ResNet (?)
    - [ ] CIFAR10
        - [ ] DFW single step
