@@ -1,34 +1,13 @@
 # Optimization for Machine Learning Project
 This repository contains the implementation of the Block Coordinate Descent and of the Deep Frank Wolfe algorithm in Pytorch. The work is inspired by the two papers [Deep Frank-Wolfe for Neural Network Optimization](https://arxiv.org/pdf/1811.07591.pdf) and [Accelerated Coordinate Descent with Adaptive Coordinate Frequencies](http://proceedings.mlr.press/v29/Glasmachers13.pdf).
 
-## TODO
-- [ ] GoogLeNet
-   - [x] CIFAR10
-   - [ ] CIFAR100
-      - [x] DFW single step
-      - [ ] DFW multi step  (Fede)
-      - [x] Adam
-      - [ ] SGD with scheduler (Fede)
-- [ ] DenseNet
-   - [x] CIFAR10
-   - [ ] CIFAR100
-      - [x] DFW single step
-      - [ ] DFW multi step (Luca)
-      - [x] Adam
-      - [ ] SGD with scheduler (Luca)
-- [ ] WideResNext
-   - [ ] CIFAR10
-       - [x] DFW single step
-       - [ ] DFW multi step (Fede)
-       - [x] Adam
-       - [x] SGD with scheduler
-    - [ ] CIFAR100
-       - [x] DFW single step
-       - [ ] DFW multi step (Luca) RUNNING
-       - [ ] Adam (Fede) RUNNING
-       - [x] SGD with scheduler
-
 ## Structure
+* `Frank_Wolfe` - Folder containing the implementation of the Deep Frank-Wolfe Algorithm
+  * `utils` - Contains utilities to load data-sets, normalize batches and other tasks
+  * `architectures.py` - Contains the implementation of architectures used for the empirical experiments
+  * `MultiClassHingeLoss.py` - Contains the implementation of the multi-class Hinge Loss as described in the original DFW paper
+* `results` - Contains the Python dictionaries with the results
+*  `DFW.ipynb` - Notebook for reproducibility of the results concerning Deep Frank-Wolfe 
 
 ## Instructions
 
@@ -50,3 +29,19 @@ This repository contains the implementation of the Block Coordinate Descent and 
 - Federico Betti
 - Ioannis Mavrothalassitis
 - Luca Rossi
+
+## TODO
+- [ ] GoogLeNet
+   - [ ] CIFAR100
+      - [ ] DFW multi step  (Fede)
+      - [ ] SGD with scheduler (Fede)
+- [ ] DenseNet
+   - [ ] CIFAR100
+      - [ ] DFW multi step (Luca)
+      - [ ] SGD with scheduler (Luca)
+- [ ] WideResNext
+   - [ ] CIFAR10
+       - [ ] DFW multi step (Fede)
+   - [ ] CIFAR100
+       - [ ] DFW multi step (Luca) RUNNING
+       - [ ] Adam (Fede) RUNNING
