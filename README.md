@@ -52,5 +52,3 @@ This repository contains the implementation of the Block Coordinate Descent and 
 - [ ] WideResNext
    - [ ] CIFAR10
        - [ ] DFW multi step (Fede)
-   - [ ] CIFAR100
-       - [ ] DFW multi step (Luca) RUNNING
