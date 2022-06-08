@@ -47,6 +47,7 @@ optimizer = DFW(model.parameters(), eta=eta, momentum=momentum)
 
 ## TODO
 * Documentazione codice (Luca) e notebook principale DFW
+* Requirements (Luca)
 * Spiegare bene il multistep all'inizio (Fede)
 * Spiegare meglio linearization loss compared to SGD (Fede) (vedi paper)
 * Dopo, refer a Jaggi
