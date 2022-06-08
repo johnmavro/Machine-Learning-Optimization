@@ -27,11 +27,10 @@ This repository contains the implementation of the Block Coordinate Descent and 
 | GoogLeNet |      |
 | ----- | ----- |
 |  | Test accuracy (%) |
-| SGD (with schedule) | 94 % | 
-| DFW |  % |
+| SGD (with schedule) | 92.79 | 
+| DFW | 90.89 |
 | DFW multistep |  92.13 | 
-| Adam  | 90.20 |
-
+| Adam  | 91.45 |
 
 #### CIFAR100
 
@@ -44,11 +43,11 @@ This repository contains the implementation of the Block Coordinate Descent and 
 ## TODO
 - [ ] GoogLeNet
    - [ ] CIFAR100
-      - [ ] DFW multi step  (Fede)
-      - [ ] SGD with scheduler (Fede)
+      - [ ] DFW multi step  (Il primo che può)
+      - [ ] SGD with scheduler (Il primo che può) 
 - [ ] DenseNet
    - [ ] CIFAR100
-      - [ ] DFW multi step (Luca)
+      - [ ] DFW multi step (Fede) RUNNING
 - [ ] WideResNext
    - [ ] CIFAR10
        - [ ] DFW multi step (Fede) RUNNING
