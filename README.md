@@ -44,7 +44,7 @@ This repository contains the implementation of the Block Coordinate Descent and 
 - [ ] GoogLeNet
    - [ ] CIFAR100
       - [ ] DFW multi step  (Il primo che può)
-      - [ ] SGD with scheduler (Il primo che può) 
+      - [ ] SGD with scheduler (Luca) RUNNING
 - [ ] DenseNet
    - [ ] CIFAR100
       - [ ] DFW multi step (Fede) RUNNING
