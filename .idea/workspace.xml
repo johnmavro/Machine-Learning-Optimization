@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="82fe5ded-a1da-45ff-887f-1d43e6fc6239" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Machine-Learning-Optimization_new.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3698" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3706" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3710" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3714" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3956" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3958" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3960" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3964" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3966" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3970" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3972" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3974" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3976" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3978" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3980" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3982" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3984" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3986" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3988" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3990" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3992" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3994" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3996" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/3998" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/4000" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/4002" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/4004" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/4006" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/4008" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/4010" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/4012" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/4014" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/4016" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/4018" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/4020" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/4022" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/4024" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/4026" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.tmp.driveupload/4028" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CIFAR10-dataset/cifar-10-python.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CIFAR100-dataset/cifar-100-python.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CIFAR100-dataset/cifar-100-python/meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CIFAR100-dataset/cifar-100-python/test" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CIFAR100-dataset/cifar-100-python/train" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/old_notebooks/stats_dict_DFW.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/CIFAR10/WideResNet/stats_dict_Adam.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_notebooks/DenseNet_DFW_Single_step_same_lr.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/CIFAR10/DenseNet/stats_dict_DFW.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/results/CIFAR10/DenseNet/stats_dict_DFW.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/CIFAR10/WideResNet/stats_dict_Adam" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2AJ1HvcxcIYOTJjknpjQIugMM5l" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="cidr.known.project.marker" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="82fe5ded-a1da-45ff-887f-1d43e6fc6239" name="Changes" comment="" />
+      <created>1654712791015</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654712791015</updated>
+      <workItem from="1654712792326" duration="2173000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

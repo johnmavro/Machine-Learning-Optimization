@@ -16,14 +16,22 @@ This repository contains the implementation of the Block Coordinate Descent and 
 - [Colab Notebook for Deep Frank-Wolfe](https://colab.research.google.com/drive/1mpsunyV-11yDXPhZLznryLxJoMx4Zqxd)
 - [Colab Notebook for Block Coordinate Descent](https://colab.research.google.com/drive/1mpsunyV-11yDXPhZLznryLxJoMx4Zqxd) TODO
 
-## Coordinate Descent
-#### FASHION-MNIST
+## Example of usage
+```python
+eta = 0.1  # proximal coefficient
+momentum = 0.9  # momentum parameter
+optimizer = DFW(model.parameters(), eta=eta, momentum=momentum)
+```
 
+```python
+# SAME FOR COORDINATE DESCENT
+```
 
-#### CIFAR10
+## Results
 
-## Frank Wolfe
-#### CIFAR10
+### Coordinate Descent
+
+### Frank Wolfe
 | GoogLeNet |      |
 | ----- | ----- |
 |  | Test accuracy (%) |
@@ -32,10 +40,14 @@ This repository contains the implementation of the Block Coordinate Descent and 
 | DFW multistep |  92.13 | 
 | Adam  | 91.45 |
 
-#### CIFAR100
-
-
 ## Authors
 - Federico Betti
 - Ioannis Mavrothalassitis
 - Luca Rossi
+
+## TODO
+* Documentazione codice (Luca) e notebook principale DFW
+* Spiegare bene il multistep all'inizio (Fede)
+* Spiegare meglio linearization loss compared to SGD (Fede) (vedi paper)
+* Dopo, refer a Jaggi
+* Passare da primale a duale passando per equazione (15) e (20)
