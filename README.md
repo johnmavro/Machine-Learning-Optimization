@@ -44,7 +44,6 @@ This repository contains the implementation of the Block Coordinate Descent and 
 - [ ] GoogLeNet
    - [ ] CIFAR100
       - [ ] DFW multi step  (Fede) RUNNING
-      - [ ] SGD with scheduler (Luca) RUNNING
 - [ ] WideResNext
    - [ ] CIFAR10
        - [ ] DFW multi step (Fede) RUNNING
