@@ -43,11 +43,8 @@ This repository contains the implementation of the Block Coordinate Descent and 
 ## TODO
 - [ ] GoogLeNet
    - [ ] CIFAR100
-      - [ ] DFW multi step  (Il primo che può)
+      - [ ] DFW multi step  (Fede) RUNNING
       - [ ] SGD with scheduler (Luca) RUNNING
-- [ ] DenseNet
-   - [ ] CIFAR100
-      - [ ] DFW multi step (Fede) RUNNING
 - [ ] WideResNext
    - [ ] CIFAR10
        - [ ] DFW multi step (Fede) RUNNING
