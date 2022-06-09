@@ -50,9 +50,5 @@ optimizer.step(lambda: float(loss), model, x, y)  # needs to have access to the 
 - Luca Rossi
 
 ## TODO
-* Documentazione codice (Luca) e notebook principale DFW
+* Notebook principale DFW (Luca)
 * Requirements (Luca)
-* Spiegare bene il multistep all'inizio (Fede)
-* Spiegare meglio linearization loss compared to SGD (Fede) (vedi paper)
-* Dopo, refer a Jaggi
-* Passare da primale a duale passando per equazione (15) e (20)
