@@ -17,14 +17,18 @@ This repository contains the implementation of the Block Coordinate Descent and 
 - [Colab Notebook for Block Coordinate Descent](https://colab.research.google.com/drive/1mpsunyV-11yDXPhZLznryLxJoMx4Zqxd) TODO
 
 ## Example of usage
+* Deep Frank-Wolfe Algorithm
 ```python
 eta = 0.1  # proximal coefficient
 momentum = 0.9  # momentum parameter
-optimizer = DFW(model.parameters(), eta=eta, momentum=momentum)
-```
+optimizer = DFW(model.parameters(), eta=eta, momentum=momentum,
+                prox_steps=2)  # define optimizer
 
-```python
-# SAME FOR COORDINATE DESCENT
+optimizer.zero_grad()
+output = model.train()(x)
+loss = loss_criterion(y, output)
+loss.backward()
+optimizer.step(lambda: float(loss), model, x, y)  # needs to have access to the loss and the model
 ```
 
 ## Results
