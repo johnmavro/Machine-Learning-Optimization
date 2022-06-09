@@ -3,9 +3,9 @@ import torch
 
 
 class MultiClassHingeLoss(nn.Module):
-    """Creates a criterion that optimizes a multi-class classification hinge
-    loss (margin-based loss) between input `x` (a 2D mini-batch `Tensor`) and
-    output y.
+    """
+    Creates a criterion that optimizes a multi-class classification hinge loss (margin-based loss)
+     between input `x` (a 2D mini-batch `Tensor`) and output y.
     """
     smooth = False
 
@@ -15,13 +15,33 @@ class MultiClassHingeLoss(nn.Module):
         self._range = None
 
     def forward(self, x, y):
+        """
+        Computes the loss given a sample (x, y)
+        :param x: input
+        :param y: target
+        :return:
+            - The loss
+        """
+        # augmented scores
         aug = self._augmented_scores(x, y)
+        # xi
         xi = self._compute_xi(x, aug, y)
 
+        # scalar product between the two (rescaled)
         loss = torch.sum(aug * xi) / x.size(0)
         return loss
 
     def _augmented_scores(self, s, y):
+        """
+        Computes the MultiClassHingeLoss given s and y
+        For a reference, see equation (2) in
+        "Deep Frank-Wolfe for Neural Network Optimization" https://arxiv.org/pdf/1811.07591.pdf
+        Here, such a loss is re-written as in (11) in the same paper
+        :param s: prediction scores
+        :param y: target scores
+        :return:
+            - the multiClassHingeLoss recomputed as in (11) with the classification mismatch delta
+        """
         if self._range is None:
             delattr(self, '_range')
             self.register_buffer('_range', torch.arange(s.size(1), device=s.device)[None, :])
@@ -31,6 +51,13 @@ class MultiClassHingeLoss(nn.Module):
 
     @torch.autograd.no_grad()
     def _compute_xi(self, s, aug, y):
+        """
+
+        :param s: prediction scores
+        :param aug: augmented scores
+        :param y: target scores
+        :return:
+        """
 
         # find argmax of augmented scores
         _, y_star = torch.max(aug, 1)
@@ -59,6 +86,7 @@ class set_smoothing_enabled(object):
         """
         Context-manager similar to the torch.set_grad_enabled(mode).
         Within the scope of the manager the MultiClassHingeLoss is smoothed (it is not otherwise).
+        The smoothing for the MultiClassHingeLoss is useful when dealing with a lot of classes (e.g. CIFAR100)
         """
         MultiClassHingeLoss.smooth = bool(mode)
 
