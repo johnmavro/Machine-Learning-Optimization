@@ -48,7 +48,3 @@ optimizer.step(lambda: float(loss), model, x, y)  # needs to have access to the 
 - Federico Betti
 - Ioannis Mavrothalassitis
 - Luca Rossi
-
-## TODO
-* Notebook principale DFW (Luca)
-* Requirements (Luca)
