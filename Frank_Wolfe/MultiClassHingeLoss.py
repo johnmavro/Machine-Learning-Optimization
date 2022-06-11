@@ -7,7 +7,7 @@ class MultiClassHingeLoss(nn.Module):
     Creates a criterion that optimizes a multi-class classification hinge loss (margin-based loss)
      between input `x` (a 2D mini-batch `Tensor`) and output y.
     """
-    smooth = False
+    smooth = False  # parameter for the smoothing of the loss: dual smoothing if dealing with a huge number of classes
 
     def __init__(self):
         super(MultiClassHingeLoss, self).__init__()
@@ -19,12 +19,11 @@ class MultiClassHingeLoss(nn.Module):
         Computes the loss given a sample (x, y)
         :param x: input
         :param y: target
-        :return:
-            - The loss
+        :return: loss
         """
-        # augmented scores
+        # retrieve augmented scores
         aug = self._augmented_scores(x, y)
-        # xi
+        # retrieve xi
         xi = self._compute_xi(x, aug, y)
 
         # scalar product between the two (rescaled)
@@ -39,13 +38,13 @@ class MultiClassHingeLoss(nn.Module):
         Here, such a loss is re-written as in (11) in the same paper
         :param s: prediction scores
         :param y: target scores
-        :return:
-            - the multiClassHingeLoss recomputed as in (11) with the classification mismatch delta
+        :return: the multiClassHingeLoss recomputed as in (11) with the classification mismatch delta
         """
         if self._range is None:
             delattr(self, '_range')
             self.register_buffer('_range', torch.arange(s.size(1), device=s.device)[None, :])
 
+        # compute the delta in equation (11)
         delta = torch.ne(y[:, None], self._range).detach().float()
         return s + delta - s.gather(1, y[:, None])
 
@@ -56,7 +55,7 @@ class MultiClassHingeLoss(nn.Module):
         :param s: prediction scores
         :param aug: augmented scores
         :param y: target scores
-        :return:
+        :return: xi
         """
 
         # find argmax of augmented scores
