@@ -6,7 +6,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="82fe5ded-a1da-45ff-887f-1d43e6fc6239" name="Changes" comment="" />
+    <list default="true" id="82fe5ded-a1da-45ff-887f-1d43e6fc6239" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/DFW.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/DFW.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/CIFAR10/WideResNet/stats_dict_SGD.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/results/CIFAR10/WideResNet/stats_dict_SGD.pkl" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,6 +51,7 @@
       <updated>1654712791015</updated>
       <workItem from="1654712792326" duration="2173000" />
       <workItem from="1655045112093" duration="829000" />
+      <workItem from="1655048156609" duration="1000" />
     </task>
     <servers />
   </component>
