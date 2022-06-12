@@ -64,7 +64,7 @@ We see from the table above how the multistep algorithm we propose in the first 
 of training outperforms the standard one. The figure below confirms the better training
 trend in the early stage for the GoogLeNet architecture.
 
-![plot](./GoogLeNet_CIFAR10.png)
+![plot](./figures/GoogLeNet_CIFAR10.png)
 
 ## Report
 The report in pdf format can be found in the folder `report`.
