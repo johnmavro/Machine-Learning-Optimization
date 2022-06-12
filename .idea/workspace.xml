@@ -7,9 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82fe5ded-a1da-45ff-887f-1d43e6fc6239" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/DFW.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/DFW.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/DenseNet_CIFAR10.png" beforeDir="false" afterPath="$PROJECT_DIR$/figures/DenseNet_CIFAR10.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/GoogLeNet_CIFAR10.png" beforeDir="false" afterPath="$PROJECT_DIR$/figures/GoogLeNet_CIFAR10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/DFW-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/DFW-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/figures/WideResNet_CIFAR100.png" beforeDir="false" afterPath="$PROJECT_DIR$/figures/WideResNet_CIFAR100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/CIFAR100/WideResNet/stats_dict_DFW.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/results/CIFAR100/WideResNet/stats_dict_DFW.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/CIFAR100/WideResNet/stats_dict_DFW_multistep.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/results/CIFAR100/WideResNet/stats_dict_DFW_multistep.pkl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +54,7 @@
       <updated>1654712791015</updated>
       <workItem from="1654712792326" duration="2173000" />
       <workItem from="1655045112093" duration="829000" />
-      <workItem from="1655048156609" duration="611000" />
+      <workItem from="1655048156609" duration="2098000" />
     </task>
     <servers />
   </component>
