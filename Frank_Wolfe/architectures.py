@@ -29,9 +29,6 @@ class GoogleNet(torch.nn.Module):
                 )
 
                 # 1x1conv -> 5x5conv branch
-                # we use 2 3x3 conv filters stacked instead
-                # of 1 5x5 filters to obtain the same receptive
-                # field with fewer parameters
                 self.b3 = nn.Sequential(
                     nn.Conv2d(input_channels, n5x5_reduce, kernel_size=1),
                     nn.BatchNorm2d(n5x5_reduce),
@@ -105,10 +102,6 @@ class GoogleNet(torch.nn.Module):
         output = self.a5(output)
         output = self.b5(output)
 
-        # """It was found that a move from fully connected layers to
-        # average pooling improved the top-1 accuracy by about 0.6%,
-        # however the use of dropout remained essential even after
-        # removing the fully connected layers."""
         output = self.avgpool(output)
         output = self.dropout(output)
         output = output.view(output.size()[0], -1)

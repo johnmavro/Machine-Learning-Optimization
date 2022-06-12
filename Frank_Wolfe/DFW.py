@@ -1,8 +1,6 @@
 import torch
 import torch.optim as optim
-import torch.nn as nn
 from Frank_Wolfe.MultiClassHingeLoss import *
-from Frank_Wolfe.MultiClassHingeLoss import set_smoothing_enabled
 from collections import defaultdict
 
 
@@ -15,7 +13,7 @@ class DFW(optim.Optimizer):
     Args:
         params (iterable): iterable of parameters to optimize or dicts defining
             parameter groups
-        eta (float): proximal coefficient
+        eta (float): proximal coefficient (default: 1e-3)
         momentum (float, optional): momentum factor (default: 0.9)
             - Note: adding the momentum proved empirically to increase the performance
         weight_decay (float, optional): weight decay (L2 penalty) (default: 0)
@@ -32,7 +30,7 @@ class DFW(optim.Optimizer):
     """
 
     def __init__(self, params, eta=1e-3, momentum=0.9, weight_decay=0, eps=1e-5, name="DFW",
-                 lambda_=0, tol=1e2, prox_steps=2):
+                 lambda_=0, tol=1e-2, prox_steps=2):
 
         # check on the learning rate
         if eta <= 0.0:
@@ -64,16 +62,13 @@ class DFW(optim.Optimizer):
                     self.state[p]['momentum_buffer'] = torch.zeros_like(p.data, requires_grad=False)
 
     @torch.autograd.no_grad()
-    def step(self, closure, model, batch_x, batch_y, smooth =False):
+    def step(self, closure):
         """
         Optimizer step method
         :param closure: to have access to the loss
-        :param model: current model (needs to be evaluated for the multistep case)
-        :param batch_x: batch input (used only for the multistep case)
-        :param batch_y: batch target (used only for the multistep case)
         :return:
         """
-        loss = float(closure()) # compute loss
+        loss = float(closure())  # compute loss
 
         w_dict = defaultdict(dict)  # initialization of w_dict
         for group in self.param_groups:
@@ -81,12 +76,10 @@ class DFW(optim.Optimizer):
             for param in group['params']:
                 if param.grad is None:
                     continue
-                w_dict[param]['delta_t'] = param.grad.data # gradient of the objective
-                w_dict[param]['r_t'] = wd * param.data # gradient of the regularization term
+                w_dict[param]['delta_t'] = param.grad.data  # gradient of the objective
+                w_dict[param]['r_t'] = wd * param.data  # gradient of the regularization term
 
-        criterion = MultiClassHingeLoss()  # needs to be convex and piecewise linear
-
-        w_0_dict = self._line_search(loss, w_dict) # line search for the optimal self.gamma on the single step
+        w_0_dict = self._line_search(loss, w_dict)  # line search for the optimal self.gamma on the single step
 
         for group in self.param_groups:
             eta = group['eta']
@@ -96,7 +89,7 @@ class DFW(optim.Optimizer):
                     continue
                 state = self.state[param]
 
-                 # get conditional gradients
+                # get conditional gradients
                 delta_t, r_t = w_dict[param]['delta_t'], w_dict[param]['r_t']
 
                 # update weights
@@ -113,16 +106,6 @@ class DFW(optim.Optimizer):
         # for a reference, see Algorithm 2 in the provided report
 
         for i in range(self.prox_steps-1):
-
-            # forward pass
-            pred = model.train()(batch_x)
-
-            # smoothing of the loss if the number of classes is big
-            if smooth:
-                with set_smoothing_enabled(True):
-                    loss = criterion(pred, batch_y)
-            else:
-              loss = criterion(pred, batch_y)
 
             # proximal step to update self.gamma and self.lambda_
             self._proximal_step(loss, w_dict, w_0_dict)
@@ -197,26 +180,28 @@ class DFW(optim.Optimizer):
         # set numerator and denominator
         num = loss
         denom = 0
+
         for group in self.param_groups:
-            wd = group['weight_decay'] # weight decay
-            eta = group['eta'] # proximal coefficient
+            wd = group['weight_decay']  # weight decay
+            eta = group['eta']  # proximal coefficient
             for param in group['params']:
                 if param.grad is None:
                     continue
                 w_0 = w_0_dict[param]  # from the first proximal step
-                w_dict[param]['delta_t'] = param.grad.data # gradient of the objective
-                w_dict[param]['r_t'] = wd * param.data # gradient of the regularization
+                w_dict[param]['delta_t'] = param.grad.data  # gradient of the objective
+                w_dict[param]['r_t'] = wd * param.data  # gradient of the regularization
 
                 delta_t, r_t = w_dict[param]['delta_t'], w_dict[param]['r_t']
-
 
                 # update of numerator and numerator, contribution of the current layer
                 num += 1/eta * torch.sum((param.data + eta * (delta_t + r_t) - w_0) * (param.data - w_0))
                 denom += 1/eta * torch.norm(param.data + eta * (delta_t + r_t) - w_0) ** 2
 
         num -= self.lambda_  # self.lambda_ is not always zero in the multistep case
-        self.gamma = float((num / (denom + self.eps)).clamp(min=0, max=1))  # update gamma
+
+        # update gamma
+        self.gamma = float((num / (denom + self.eps)).clamp(min=0, max=1))
         
         # update lambda_
         self.lambda_ *= (1 - self.gamma)
-        self.lambda_ += self.gamma * loss  # update lambda_
+        self.lambda_ += self.gamma * loss
