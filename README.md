@@ -14,8 +14,8 @@ This repository contains the implementation of the Block Coordinate Descent and 
 Requirements for the needed packages are available in requirements.txt. To install the needed packages, please run:\
 `pip install -r requirements.txt`
 ## Reproducibility
-We provide two notebook `DFW.ipynb` and `CD.ipynb` for reproducibility of the obtained results. 
-Because of the size of the architectures which were tested, we recommend using a GPU to check the correct training trends. 
+We provide two notebooks `DFW.ipynb` and `BCD.ipynb` for reproducibility of the obtained results. 
+We recommend to run the notebooks in Google Colab for your facilitation since we provide a simple interface.
 
 ## Example of usage
 * Deep Frank-Wolfe
