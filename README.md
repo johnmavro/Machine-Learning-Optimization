@@ -65,6 +65,7 @@ gamma=0.2).
 
 ### Frank Wolfe
 #### CIFAR10
+
 | GoogLeNet            |  Test accuracy (%)|
 |:---------------------|-------------------|
 | SGD (with schedule)  | 92.79             | 
@@ -72,18 +73,13 @@ gamma=0.2).
 | DFW multistep        | 92.13             | 
 | Adam                 | 91.45             |
 
-| WideResNet          | Test accuracy (%)  |
-|:--------------------|------------------- |
-| SGD (with schedule) | 90.57              | 
-| DFW                 | 91.45              | 
-| DFW multistep       | 92.40              |  
-| Adam                | 91.31              | 
 
-We see from the table above how the multistep algorithm we propose in the first epochs
-of training outperforms the standard one. The figure below confirms the better training
-trend in the early stage for the GoogLeNet architecture.
+##### Hyperparameters used
 
-![plot](./figures/GoogLeNet_CIFAR10.png)
+* DFW and DFW multistep: η = 0.1, μ = 0.9.
+* Adam: γ = 0.001, β1 = 0.9, β2 = 0.999.
+* SGD: γ = 0.01, μ = 0.9, scheduler StepLR(stepsize=20,
+gamma=0.2).
 
 ## Report
 The report in pdf format can be found in the folder `report`.
