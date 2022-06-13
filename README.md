@@ -61,7 +61,10 @@ niter = 50 # number of epochs
 gamma = 0.1
 alpha = 4
 
-train_losses,test_losses, accuracy_train, accuracy_test, epochs_times, Ws, bs = execute_training(Layer_list, input_size, hidden_size, output_size, x_train, x_test, y_train, y_test, y_train_one_hot, y_test_one_hot, GD_Update, linear_extension, I1 = I1, I2=I2, niter = niter, gamma = gamma, alpha = alpha)
+train_losses,test_losses, accuracy_train, accuracy_test, epochs_times, Ws, bs =
+                   execute_training(Layer_list, input_size, hidden_size, output_size, x_train, x_test,
+                   y_train, y_test, y_train_one_hot, y_test_one_hot, GD_Update, linear_extension,
+                   I1 = I1, I2=I2, niter = niter, gamma = gamma, alpha = alpha)
 
 ```
 
