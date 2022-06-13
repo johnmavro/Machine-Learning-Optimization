@@ -32,7 +32,38 @@ loss.backward()
 optimizer.step(lambda: float(loss), model, x, y)  # needs to have access to the loss and the model
 ```
 * Block Coordinate Descent
-  * TODO: John
+
+```python
+
+# The optimizer is not compatible with pytorch
+# to perform training please run the following function
+
+row_size = 40  # row_size = number of rows (of the image) in the output
+column_size = 40  # column_size = number of columns (of the image) in the output
+Layer_list = [["Perceptron", column_size, row_size]]
+input_size = 784 # for MNIST
+hidden_size = 2*input_size #size of the first hidden layer
+output_size = 10 # for MNIST
+
+# x_train = input features for train
+# x_test = input features for test
+# y_train = labels for train
+# y_test = labels for test
+# y_train_one_hot = one_hot_representation of training labels
+# y_test_one_hot = one_hot_representation of testing labels
+GD_update = False  # True if we use our Block Coordinate descent + Gradient VN Update
+linear_extension = False # True if we use prox-linear strategy for the VN update
+I1 = hidden_size # unless you use convolution
+I2 = 1 # unless convolution
+niter = 50 # number of epochs
+
+# Hyperparameters of Block coordinate descent (refer to the report)
+gamma = 0.1
+alpha = 4
+
+train_losses,test_losses, accuracy_train, accuracy_test, epochs_times, Ws, bs = execute_training(Layer_list, input_size, hidden_size, output_size, x_train, x_test, y_train, y_test, y_train_one_hot, y_test_one_hot, GD_Update, linear_extension, I1 = I1, I2=I2, niter = niter, gamma = gamma, alpha = alpha)
+
+```
 
 ## Results
 
