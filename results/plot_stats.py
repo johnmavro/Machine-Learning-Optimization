@@ -11,7 +11,7 @@ def plot_stats(dataset_name, model_type):
     :return:
     """
     stats_dict_list = []
-    list_optimizers = ["Adam", "Coordinate-Descent", "Coordinate-Descent+SGD", "SGD"]
+    list_optimizers = ["Adam", "Coordinate-Descent", "Coordinate-Descent+Adam", "SGD"]
     for optimizer in list_optimizers:
         output_folder = os.path.join(os.getcwd(), dataset_name)
         os.makedirs(output_folder, exist_ok=True)
@@ -20,8 +20,8 @@ def plot_stats(dataset_name, model_type):
             stats_dict = pickle.load(handle)
         stats_dict_list.append(stats_dict)
 
-    list_optimizers_tilda = ["Adam", "Coordinate-Descent", "Coordinate-Descent+SGD", "SGD"]
-    nepochs = 49#stats_dict_list[0]["Adam"]['epochs']
+    list_optimizers_tilda = ["Adam", "Coordinate-Descent", "Coordinate-Descent+Adam", "SGD"]
+    nepochs = 50#stats_dict_list[0]["Adam"]['epochs']
     print(dataset_name)
     average_time = np.array([stats_dict_list[i][list_optimizers_tilda[i]]['epochs']
                          for i in range(len(list_optimizers_tilda))])
@@ -43,13 +43,13 @@ def plot_stats(dataset_name, model_type):
     for i in range(len(test_acc)):
         #print(test_acc[i])
         #print(nepochs)
-        ax[0, 0].plot(np.arange(nepochs + 1), test_acc[i])
+        ax[0, 0].plot(np.arange(nepochs + 1), [0.1]+test_acc[i])
         ax[0, 0].set_ylim([0, 1])
         ax[0, 0].set_xlabel('Epoch', fontsize='x-large')
         ax[0, 0].set_ylabel('Test accuracy', fontsize='xx-large')
         ax[0, 0].set_title('Test accuracy', fontsize='xx-large')
         ax[0, 0].legend(list_optimizers)
-        ax[0, 1].plot(np.arange(nepochs + 1), train_losses[i])
+        ax[0, 1].plot(np.arange(nepochs + 1), [3000]+train_losses[i])
         ax[0, 1].set_xlabel('Epoch', fontsize='x-large')
         ax[0, 1].set_ylabel('Training loss', fontsize='xx-large')
         ax[0, 1].set_title('Training loss', fontsize='xx-large')
