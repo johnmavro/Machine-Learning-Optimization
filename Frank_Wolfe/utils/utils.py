@@ -149,7 +149,7 @@ def plot_stats(dataset_name, model_type):
     stats_dict_list = []
     list_optimizers = ["Adam", "SGD", "DFW", "DFW_multistep"]
     for optimizer in list_optimizers:
-        output_folder = os.path.join(os.getcwd(), 'results/' + dataset_name + '/' + model_type)
+        output_folder = os.path.join(os.getcwd(), 'Frank_Wolfe/results/' + dataset_name + '/' + model_type)
         os.makedirs(output_folder, exist_ok=True)
         fname = output_folder + '/stats_dict_' + optimizer + '.pkl'
         with open(fname, 'rb') as handle:
