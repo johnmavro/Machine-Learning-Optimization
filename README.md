@@ -37,7 +37,32 @@ optimizer.step(lambda: float(loss), model, x, y)  # needs to have access to the 
 ## Results
 
 ### Coordinate Descent
-* TODO: John
+
+#### MNIST DATASET
+
+
+| 4-layer perceptron   |  Test accuracy (%)|  Time per epoch
+|:---------------------|-------------------|-------------------|
+| BCD                  | 94.54             |      1.62         |
+| Adam                 | 96.46             |      16.21        |
+| Prox Linear          | 94.56             |      2.03         |
+| BCD(GD update)       | 93.68             |      1.84         |
+| SGD (with schedule)  | 94.52             |      9.9          |
+| BCD + Adam           | 95.85             |      7.1          |
+| BCD + SGD            | 95.56             |      5.1          |
+
+##### Hyperparameters used
+
+* Block Coordinate Descent: γ = 0.1, α = 4.
+* Adam: γ = 0.001, β1 = 0.9, β2 = 0.999.
+* SGD: γ = 0.01, μ = 0.9, scheduler StepLR(stepsize=15,
+gamma=0.2).
+* Block Coordinate Descent with Prox Linear VN update:
+γ = 0.1, α = 4.
+* Block Coordinate Descent with GD update (4) for VN :
+γ = 0.1, α = 4, T = 250, ηt = O (1/T).
+* Block Coordinate Descent: γ = 0.1, α = 4
+
 ### Frank Wolfe
 #### CIFAR10
 | GoogLeNet            |  Test accuracy (%)|
