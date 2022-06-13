@@ -30,6 +30,7 @@ Requirements for the needed packages are available in requirements.txt. To insta
 ## Reproducibility
 We provide two notebooks `DFW.ipynb` and `BCD.ipynb` for reproducibility of the obtained results.
 We recommend to run the notebooks in Google Colab for your facilitation since we provide a simple interface.
+In each notebook running the second to last cell will train the model, with the parameters specified above, while running the last one will reproduce the plots presented in the report.
 
 ## Example of usage
 * Deep Frank-Wolfe
@@ -136,3 +137,8 @@ The report in pdf format can be found in the folder `report`.
 - Federico Betti
 - Ioannis Mavrothalassitis
 - Luca Rossi
+
+## Acknowledgements
+
+-[Block Coordinate Descent](https://github.com/IssamLaradji/BlockCoordinateDescent)
+-[Deep Frank Wolfe](https://github.com/oval-group/dfw#acknowledgments)
