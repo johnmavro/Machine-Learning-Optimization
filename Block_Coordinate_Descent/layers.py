@@ -77,7 +77,9 @@ class Layer():
     std = math.sqrt(1/(row_size*col_size))
     if(self.layer_type[0] =="Average Pooling"):
       self.weights = torch.add(torch.FloatTensor(self.row_out*self.col_out,self.row_size*self.col_size),1).to(self.device)
+      print(torch.norm(self.weights))
       self.weights = filter_conv(self.weights,self.col_size,self.row_size,self.layer_type[1])
+      print(torch.norm(self.weights))
       self.weights = torch.mul(self.weights,1/(self.layer_type[1]*self.layer_type[1]))
       self.bias = torch.FloatTensor(row_out*col_out,1).uniform_(-std, std).to(self.device)
     elif(self.layer_type[0]=="Convolution"):
@@ -127,26 +129,3 @@ class Layer():
     This function returns the type of the layer
     """
     return self.layer_type
-
-#############################################################
-#      Average Pooling Functions                            #
-#      (Not Used)                                           #
-#############################################################
-
-def avg_pool(W,I1,I2,size = 2):
-  mask_list = []
-  for i in range(size):
-    mask_list += [1/size**2]*size+[0]*(I2-size)
-  mask_list +=[0]*(I1-size)*I2
-  full_mask = [mask_list]
-  counter = I2-size
-  for i in range((I2-size+1)*(I1-size+1)-1):
-    next_mask=shift_right(full_mask[-1])
-    if(counter==0):
-      counter = I2-size
-      for j in range(size-1):
-        next_mask=shift_right(next_mask)
-    else:
-      counter -=1
-    full_mask.append(next_mask)
-  return torch.mul(torch.tensor(full_mask).to(device),W)

@@ -21,12 +21,12 @@ from layers import *
 
 #Train function for Block Coordinate Descent
 def execute_training(layers, input_size, hidden_size, output_size, train_set, val_set,
-                     train_labels, val_labels, y_train_one_hot, y_test_one_hot, use_gradient, I1 = 40, I2 = 40,
+                     train_labels, val_labels, y_train_one_hot, y_test_one_hot, use_gradient, linear_prox, I1 = 40, I2 = 40,
                      niter = 100, gamma = 1, alpha = 5):
   """
   The function takes the following arguements and produces a list of weights and biases with which
   you can use the make_pred function to get a list of predictions
-  :param layers: The total number of layers of the network
+  :param layers: A list that has layers as inputs e.g. ["Perceptron",size1,size2]
   :param input_size: The total size of the input layer
   :param hidden_size: The size of the hidden layer
   :param output_size: The size of the output layer (usefull for multiclass classification)
@@ -34,11 +34,22 @@ def execute_training(layers, input_size, hidden_size, output_size, train_set, va
   :param val_set: The validation set
   :param train_labels: The training labels
   :param val labels: The validation labels
+  :param y_train_one_hot: The one hot encoding of the train set
+  :param y_test_one_hot: The one hot encoding of the test set
   :param use_gradient: True if the first update of V is carried out without linearization but using the gradient
+  :param linear_prox: Use the linear extensiion for the output layer
+  :param I1: The row size of the first hidden layer
+  :param I2: The column size of the first hidden layer
   :param niter: The default number of epochs to train the network
   :param gamma: The gamma parameter of the algorithm
   :param alpha: The alpha parameter of the algorithm
-  :return Ws,bs: Returns two lists that go in order from the input to the output layer of the weights and the biases of each layer
+  :return train_loss,test_loss,accuracy_train,accuracy_test,time,Ws,bs: Returns
+    The list of losses for the train set through all iterations.
+    The list of losses for the test set through all iterations.
+    The accuracy on the train set through all iterations.
+    The accuracy on the test set through all iterations.
+    The time spent at each iteration.
+    Two lists that go in order from the input to the output layer of the weights and the biases of each layer.
   """
 
   N = len(train_labels)
@@ -50,11 +61,6 @@ def execute_training(layers, input_size, hidden_size, output_size, train_set, va
   Layer1 = Layer(input_size,1,hidden_size,1,["Perceptron"])
   W = Layer1.get_weights()
   b = Layer1.get_bias()
-  #W = torch.FloatTensor(hidden_size, input_size).uniform_(-std, std)
-  #b = torch.FloatTensor(hidden_size, 1).uniform_(-std, std)
-
-  #b = b.to(device = device)
-  #W = W.to(device = device)
 
   U = torch.addmm(b.repeat(1, N), W, train_set) # equivalent to W1@train_set+b1.repeat(1,N)
   V = nn.ReLU()(U)
@@ -102,9 +108,6 @@ def execute_training(layers, input_size, hidden_size, output_size, train_set, va
     bs.append(b)
     Us.append(U)
     Vs.append(V)
-  for i in range(len(bs)):
-    print("Layer ",i," W ", Ws[i].shape," Layer W ",Layers[i].get_weights().shape)
-    print(Layers[i].get_type())
 
   row.append(cr_row_size)
   col.append(cr_col_size)
@@ -112,33 +115,15 @@ def execute_training(layers, input_size, hidden_size, output_size, train_set, va
   Layer_out = Layer(cr_col_size,cr_row_size,output_size,1,["Perceptron",10])
   W = Layer_out.get_weights()
   b = Layer_out.get_bias()
-  #print(W.shape)
-  # we move them to GPU
-  #b = b.to(device = device)
-  #W = W.to(device = device)
-  #U = torch.addmm(b.repeat(1, N), W, Vs[-1])
-  #V = U
-  #print(U.shape)
-  #Ws.append(W)
-  Layers.append(Layer_out)
-  #W = torch.FloatTensor(output_size, cr_row_size*cr_col_size).uniform_(-std, std)
-  #b = torch.FloatTensor(output_size, 1).uniform_(-std, std)
 
-  # we move them to GPU
-  #b = b.to(device = device)
-  #W = W.to(device = device)
-  print(cr_col_size,cr_row_size)
-  print(W.shape,Vs[-1].shape)
+  Layers.append(Layer_out)
+
   U = torch.addmm(b.repeat(1, N), W, Vs[-1])
   V = U
   Ws.append(W)
   bs.append(b)
   Us.append(U)
   Vs.append(V)
-
-  for i in range(len(bs)):
-    print("Layer ",i," W ", bs[i].shape," Layer W ",Layers[i].get_bias().shape)
-    print(Layers[i].get_type())
 
   # constant initialization
 
@@ -155,15 +140,14 @@ def execute_training(layers, input_size, hidden_size, output_size, train_set, va
   loss1 = np.empty(niter)
   loss2 = np.empty(niter)
   loss_class = np.empty(niter)
+  train_class = np.empty(niter)
   accuracy_train = np.empty(niter)
   accuracy_test = np.empty(niter)
   time1 = np.empty(niter)
 
   opt_accuracy = 0
-  print(len(Ws),len(Layers))
   early_Ws = Ws
   early_bs = bs
-  print('Train on', N, 'samples, validate on', N_test, 'samples')
   for k in range(niter):
 
     start = time.time()
@@ -176,9 +160,12 @@ def execute_training(layers, input_size, hidden_size, output_size, train_set, va
         Vs[-1] = (y_train_one_hot + gamma3*Us[-1] + alpha1*Vs[-1])/(1+ gamma3 + alpha1)
       else:
         for i in range(250):
-          Vs[-1] = Vs[-1] - (torch.exp(Vs[-1])/torch.sum(torch.exp(Vs[-1]),dim=0)-y_train_one_hot) * 0.01/(i+1)
+          Vs[-1] = Vs[-1] - (gamma3*(Vs[-1]-Us[-1])+torch.exp(Vs[-1])/torch.sum(torch.exp(Vs[-1]),dim=0)-y_train_one_hot) * 0.01/(i+1)
     else:
-      Vs[-1] = (y_train_one_hot + gamma3*Us[-1] + alpha1*Vs[-1])/(1+ gamma3 + alpha1)
+        if(linear_prox):
+            Vs[-1] = (gamma*Vs[-1]+alpha*Us[-1]+ y_train_one_hot - Vs[-1])/(gamma+alpha)
+        else:
+            Vs[-1] = (y_train_one_hot + gamma3*Us[-1] + alpha1*Vs[-1])/(1+ gamma3 + alpha1)
 
     # update U3
     Us[-1] = (gamma3*Vs[-1] + rho3*(torch.mm(W,Vs[-2]) + b.repeat(1,N)))/(gamma3 + rho3)
@@ -220,41 +207,19 @@ def execute_training(layers, input_size, hidden_size, output_size, train_set, va
     bs[0] = b
     Layers[0].update_layer(Us[0],train_set,alpha8,rho1)
 
-    #a1_train = nn.ReLU()(torch.addmm(b1.repeat(1, N), W1, train_set))
-    #a1_train = train_set
-    #for i in range(len(Vs)-1,0,-1):
-    #  a1_train = nn.ReLU()(torch.addmm(bs[i].repeat(1, N), Ws[i], a1_train))
-    #pred = torch.argmax(torch.addmm(bs[0].repeat(1, N), Ws[0], a1_train), dim=0)
-    #pred,_ = make_pred(Ws,bs,train_set,N)
-
-    #a1_test = val_set
-    #a1_test = nn.ReLU()(torch.addmm(b1.repeat(1, N_test), W1, val_set))
-    #for i in range(len(Vs)-1,0,-1):
-    #  a1_test = nn.ReLU()(torch.addmm(bs[i].repeat(1, N_test), Ws[i], a1_test))
-    #pred_test = torch.argmax(torch.addmm(bs[0].repeat(1, N_test), Ws[0], a1_test), dim=0)
-    #pred_test, prob_test = make_pred(Ws,bs,val_set,N_test)
     pred_Ws = [l.get_weights() for l in Layers]
     pred_bs = [l.get_bias() for l in Layers]
-    pred,_ = make_pred(pred_Ws,pred_bs,x_train,N)
+    pred,prob_train = make_pred(pred_Ws,pred_bs,train_set,N)
 
-    #a1_test = x_test
-    #a1_test = nn.ReLU()(torch.addmm(b1.repeat(1, N_test), W1, x_test))
-    #for i in range(len(Vs)-1,0,-1):
-    #  a1_test = nn.ReLU()(torch.addmm(bs[i].repeat(1, N_test), Ws[i], a1_test))
-    #pred_test = torch.argmax(torch.addmm(bs[0].repeat(1, N_test), Ws[0], a1_test), dim=0)
-    pred_test, prob_test = make_pred(pred_Ws,pred_bs,x_test,N_test)
+    pred_test, prob_test = make_pred(pred_Ws,pred_bs,val_set,N_test)
 
     loss_class[k] = torch.sum(- y_test_one_hot * torch.log(prob_test))
-
+    train_class[k] = torch.sum(- y_train_one_hot * torch.log(prob_train))
     loss1[k] = gamma/2*torch.pow(torch.dist(Vs[-1],y_train_one_hot,2),2).cpu().numpy()
     loss2[k] = loss1[k] + gamma/2 * torch.pow(torch.dist(torch.addmm(bs[0].repeat(1,N), Ws[0], train_set),Us[0],2),2).cpu().numpy()
 
     for i in range(1,len(layers)):
       loss2[k] = loss2[k] + gamma/2 * torch.pow(torch.dist(torch.addmm(bs[i].repeat(1,N), Ws[i], Vs[i-1]),Us[i],2),2).cpu().numpy()
-
-    #loss2[k] = loss1[k] + rho1/2*torch.pow(torch.dist(torch.addmm(b1.repeat(1,N), W1, train_set),U1,2),2).cpu().numpy() \
-    #+rho2/2*torch.pow(torch.dist(torch.addmm(b2.repeat(1,N), W2, V1),U2,2),2).cpu().numpy() \
-    #+rho3/2*torch.pow(torch.dist(torch.addmm(b3.repeat(1,N), W3, V2),U3,2),2).cpu().numpy()
 
     # compute training accuracy
     correct_train = pred == train_labels
@@ -270,7 +235,13 @@ def execute_training(layers, input_size, hidden_size, output_size, train_set, va
     time1[k] = duration
 
     # print results
-    print('Epoch', k + 1, '/', niter, '\n',
+    if(use_gradient):
+        print('Epoch', k + 1, '/', niter, '\n',
+          '-', 'time:', time1[k], '-', 'sq_loss:', train_class[k], '-', 'tot_loss:',
+          loss2[k], '-', 'loss_class:', loss_class[k], '-', 'acc:',
+          accuracy_train[k], '-', 'val_acc:', accuracy_test[k])
+    else:
+        print('Epoch', k + 1, '/', niter, '\n',
           '-', 'time:', time1[k], '-', 'sq_loss:', loss1[k], '-', 'tot_loss:',
           loss2[k], '-', 'loss_class:', loss_class[k], '-', 'acc:',
           accuracy_train[k], '-', 'val_acc:', accuracy_test[k])
@@ -282,7 +253,10 @@ def execute_training(layers, input_size, hidden_size, output_size, train_set, va
   print('The total time spent is:', np.sum(time1), 's')
   print('\n\n')
   print('Early stopping accuracy:',opt_accuracy)
-  return loss1,loss_class,accuracy_train,accuracy_test,time1,early_Ws,early_bs
+  if(use_gradient):
+      return train_class,loss_class,accuracy_train,accuracy_test,time1,early_Ws,early_bs
+  else:
+      return loss1,loss_class,accuracy_train,accuracy_test,time1,early_Ws,early_bs
 
 #Train function for pytorch models
 def train_model(model, dataset_train, dataset_test, optimizer, criterion, epochs,scheduler,optimizer_name="SGD"):
