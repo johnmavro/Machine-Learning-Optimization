@@ -14,12 +14,8 @@ This repository contains the implementation of the Block Coordinate Descent and 
 Requirements for the needed packages are available in requirements.txt. To install the needed packages, please run:\
 `pip install -r requirements.txt`
 ## Reproducibility
-We provide a notebook for reproducibility of the obtained results. 
-Because of the size of the architectures which were tested, we recommend using a GPU to
-check the correct training trends. 
-
-- [Colab Notebook for Deep Frank-Wolfe](https://colab.research.google.com/drive/1mpsunyV-11yDXPhZLznryLxJoMx4Zqxd)
-- [Colab Notebook for Block Coordinate Descent](https://colab.research.google.com/drive/1mpsunyV-11yDXPhZLznryLxJoMx4Zqxd) TODO
+We provide two notebook `DFW.ipynb` and `CD.ipynb` for reproducibility of the obtained results. 
+Because of the size of the architectures which were tested, we recommend using a GPU to check the correct training trends. 
 
 ## Example of usage
 * Deep Frank-Wolfe
@@ -44,21 +40,19 @@ optimizer.step(lambda: float(loss), model, x, y)  # needs to have access to the 
 * TODO: John
 ### Frank Wolfe
 #### CIFAR10
-| GoogLeNet            |                   |
+| GoogLeNet            |  Test accuracy (%)|
 |:---------------------|-------------------|
-|                      | Test accuracy (%) |
-| SGD (with schedule)  |  92.79            | 
+| SGD (with schedule)  | 92.79             | 
 | DFW                  | 90.89             |
 | DFW multistep        | 92.13             | 
 | Adam                 | 91.45             |
 
-| WideResNet          |                   |
-|:--------------------|-------------------|
-|                     | Test accuracy (%) |
-| SGD (with schedule) | 90.57             | 
-| DFW                 | 91.45             |
-| DFW multistep       | 92.40             | 
-| Adam                | 91.31             |
+| WideResNet          | Test accuracy (%)  |
+|:--------------------|------------------- |
+| SGD (with schedule) | 90.57              | 
+| DFW                 | 91.45              | 
+| DFW multistep       | 92.40              |  
+| Adam                | 91.31              | 
 
 We see from the table above how the multistep algorithm we propose in the first epochs
 of training outperforms the standard one. The figure below confirms the better training
