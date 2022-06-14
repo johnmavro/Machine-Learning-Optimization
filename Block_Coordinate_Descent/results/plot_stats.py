@@ -13,7 +13,7 @@ def plot_stats(dataset_name, model_type):
     stats_dict_list = []
     list_optimizers = ["Adam", "Coordinate-Descent", "Coordinate-Descent+Adam", "SGD"]
     for optimizer in list_optimizers:
-        output_folder = os.path.join(os.getcwd(), dataset_name)
+        output_folder = os.path.join(os.getcwd(),'Block_Coordinate_Descent/results/' + dataset_name)
         os.makedirs(output_folder, exist_ok=True)
         fname = output_folder + '/stats_dict_Multilayer-Perceptron_' + optimizer + '.pkl'
         with open(fname, 'rb') as handle:
@@ -29,7 +29,7 @@ def plot_stats(dataset_name, model_type):
     test_acc = np.array([stats_dict_list[i][list_optimizers_tilda[i]]['test_acc']
                          for i in range(len(list_optimizers_tilda))])
     train_losses = np.array([stats_dict_list[i][list_optimizers_tilda[i]]['train_losses']
-                             for i in range(len(list_optimizers_tilda))])                         
+                             for i in range(len(list_optimizers_tilda))])
     print("Average Epoch Times:")
     for i in range(len(average_time)):
         print(list_optimizers[i],":",np.average(average_time[i]))
