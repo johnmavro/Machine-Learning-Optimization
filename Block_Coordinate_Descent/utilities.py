@@ -93,12 +93,12 @@ def load_dataset(train, test, n_classes):
   x_d0 = train[0][0].size()[0]
   x_d1 = test[0][0].size()[1]
   x_d2 = train[0][0].size()[2]
-  
+
   N = x_d3 = len(train)
 
   x_train = torch.empty(N,x_d0*x_d1*x_d2)
   y_train = torch.empty(N, dtype=torch.long)
-  for i in range(N): 
+  for i in range(N):
     x_train[i,:] = torch.reshape(train[i][0], (1, x_d0*x_d1*x_d2))
     y_train[i] = train[i][1]
   x_train = torch.t(x_train)
@@ -112,7 +112,7 @@ def load_dataset(train, test, n_classes):
   N_test = x_d3_test = len(test)
   x_test = torch.empty(N_test,x_d0*x_d1*x_d2)
   y_test = torch.empty(N_test, dtype=torch.long)
-  for i in range(N_test): 
+  for i in range(N_test):
     x_test[i,:] = torch.reshape(test[i][0], (1, x_d0*x_d1*x_d2))
     y_test[i] = test[i][1]
   x_test = torch.t(x_test)
@@ -140,10 +140,74 @@ def pickle_results(name, train_loss, loss_class, accuracy_train, accuracy_val,
   :return None
   """
   dictionary_save = {"Weights": weights,"Biases":biases, "train_loss": train_loss,
-  "loss_class":loss_class,"accuracy_train":accuracy_train,"accuracy_test":accuracy_val, 
+  "loss_class":loss_class,"accuracy_train":accuracy_train,"accuracy_test":accuracy_val,
   "alpha": alpha, "gamma": gamma}
 
   results_name = "results_"+name
   a_file = open(results_name,"wb")
   pickle.dump(dictionary_save,a_file)
   a_file.close()
+
+def plot_stats(dataset_name,opt_list,opt_list_tilda,model_type):
+    """
+    Plots test accuracy and training loss for all the tested optimizers (Adam, SGD, DFW, DFW multistep)
+    :param dataset_name: name of the dataset (CIFAR10, MNIST, FMNIST)
+    :param opt_list: list of the names of the optimizers we use
+    :param opt_list_tilda: list of the type of the optimizers we use
+    :param model_type: architecture
+    :return:
+    """
+    stats_dict_list = []
+    list_optimizers = opt_list
+    for optimizer in list_optimizers:
+        output_folder = os.path.join(os.getcwd(), dataset_name)
+        os.makedirs(output_folder, exist_ok=True)
+        fname = output_folder + '/stats_dict_Multilayer-Perceptron_' + optimizer + '.pkl'
+        with open(fname, 'rb') as handle:
+            stats_dict = pickle.load(handle)
+        stats_dict_list.append(stats_dict)
+
+    list_optimizers_tilda = opt_list_tilda
+    nepochs = 50#stats_dict_list[0]["Adam"]['epochs']
+    print(dataset_name)
+    average_time = np.array([stats_dict_list[i][list_optimizers_tilda[i]]['epochs']
+                         for i in range(len(list_optimizers_tilda))])
+    #print(stats_dict_list)
+    tmp = [stats_dict_list[i][list_optimizers_tilda[i]]['test_acc']
+                         for i in range(len(list_optimizers_tilda))]
+    for i in tmp:
+        i.insert(0,0.1)
+    test_acc = np.array(tmp)
+    tmp2 = [stats_dict_list[i][list_optimizers_tilda[i]]['train_losses']
+                             for i in range(len(list_optimizers_tilda))]
+    maximum = 0
+    for i in tmp2:
+        if(int(3*i[0]/2)>maximum):
+          maximum = int(3*i[0]/2)
+    for i in tmp2:
+      i.insert(0,maximum)
+    train_losses = np.array([stats_dict_list[i][list_optimizers_tilda[i]]['train_losses']
+                             for i in range(len(list_optimizers_tilda))])
+    print("Average Epoch Times:")
+    for i in range(len(average_time)):
+        print(list_optimizers[i],":",np.average(average_time[i]))
+    print("Test Accuracy:")
+    for i in range(len(test_acc)):
+        print(list_optimizers[i],":",np.amax(test_acc[i]))
+    #print(test_acc)
+    fig, ax = plt.subplots(1, 2, figsize=(13.4, 4.8), squeeze=False)
+    fig.tight_layout(pad=7.)
+    fig.subplots_adjust(top=0.9, left=0.1, right=0.9, bottom=0.12)
+    for i in range(len(test_acc)):
+        ax[0, 0].plot(np.arange(nepochs + 1), test_acc[i])
+        ax[0, 0].set_ylim([0, 1])
+        ax[0, 0].set_xlabel('Epoch', fontsize='x-large')
+        ax[0, 0].set_ylabel('Test accuracy', fontsize='xx-large')
+        ax[0, 0].set_title('Test accuracy', fontsize='xx-large')
+        ax[0, 0].legend(list_optimizers)
+        ax[0, 1].plot(np.arange(nepochs + 1), train_losses[i])
+        ax[0, 1].set_xlabel('Epoch', fontsize='x-large')
+        ax[0, 1].set_ylabel('Training loss', fontsize='xx-large')
+        ax[0, 1].set_title('Training loss', fontsize='xx-large')
+        ax[0, 1].legend(list_optimizers)
+    plt.show()
