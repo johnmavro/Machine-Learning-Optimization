@@ -33,8 +33,7 @@ Requirements for the needed packages are available in requirements.txt. To insta
 
 ## Reproducibility of the results
 We provide two notebooks `DFW.ipynb` and `BCD.ipynb` for reproducibility of the obtained results. We recommend runnning the notebooks in Google Colab for your facilitation, since we provide a simple interface.\
-Each notebook is organized as follows: you can perform training, with a selected architecture and a selected optimizer, by running the third to last cell, and the second to last cell will show a plot of the obtained training trends. Otherwise, running the last cell will load directly our results from the dictionaries
-and thus show the plots which are presented in the report.\
+Each notebook is organized as follows: you can perform training, with a selected architecture and a selected optimizer, by running the third to last cell, and the second to last cell will show a plot of the obtained training trends. Consequently, the results you obtained can be saved in dictionaries different from the ones in which our results are stored to produce complete plots of all optimizers. For further instructions, please refer to the single notebooks. Otherwise, running the very last cell of each notebook will load directly our results from the dictionaries, thus showing the plots which are presented in the report.\
 Finally, in both notebooks, you find the hyper-parameters we used for training at the very bottom.
 
 ## Example of usage
@@ -97,12 +96,12 @@ train_losses,test_losses, accuracy_train, accuracy_test, epochs_times, Ws, bs =
 
 | 4-layer perceptron   |  Test accuracy (%)|
 |:---------------------|-------------------|
-| BCD                  | 94.54             |
-| Adam                 | 96.46             |
-| Prox Linear          | 94.56             |
+| BCD                  | 93.71             |
+| Adam                 | 96.41             |
+| Prox Linear          | 93.46             |
 | BCD(GD update)       | 93.68             |
-| SGD (with schedule)  | 94.52             |
-| BCD + Adam           | 95.85             |
+| SGD (with schedule)  | 94.57             |
+| BCD + Adam           | 95.93             |
 | BCD + SGD            | 95.56             |
 
 ### Frank Wolfe
