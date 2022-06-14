@@ -4,16 +4,16 @@ This repository contains the implementation of the Block Coordinate Descent and 
 ## Structure
 * `Frank_Wolfe` - Folder containing the implementation of the Deep Frank-Wolfe Algorithm
   * `figures` - Contains the figures which are shown in the report for Frank-Wolfe
-  * `results` - Contains the Python dictionaries with the results for the experiments regarding the Frank Wolfe Algorithm
-  * `utils` - Contains utilities to load data-sets, normalize batches and other tasks
-  * `architectures.py` - Contains the implementation of the architectures used for the empirical experiments
-  * `DFW.py` - Implementation of the DFW optimizer in Pytorch
-  * `MultiClassHingeLoss.py` - Contains the implementation of the multi-class Hinge Loss as described in the original DFW paper
-* `Block_Coordinate_Descent` - Folder containing the implementations for the Block Coordinate Descent Algorithm
-  * `results` - Contains the results of the Block Coordinate Descent Algorithm experiments, the figures and the dictionaries
-  * `CD_utilities.py` - Contains the functions which are necessary to run the updates for BCD
-  * `Convolution_BCD.ipynb` - This notebook contains a comparison between a CNN and an MLP trained with the BCD algorithm as suggested in the original paper.
-  * `layers.py` - This file contains the implementation of the activations and the update functions, for the three basic layers Fully Connected, Convolution, Average pooling
+  * `results` - Training results for DFW algorithm.
+  * `utils` - Contains utilities for training with DFW algorithm.
+  * `architectures.py` - Contains the implementation of the architectures used for the empirical experiments.
+  * `DFW.py` - Implementation of the DFW optimizer in Pytorch.
+  * `MultiClassHingeLoss.py` - Contains the implementation of the multi-class Hinge Loss as described in the original DFW paper.
+* `Block_Coordinate_Descent` - Folder containing the implementations for the Block Coordinate Descent Algorithm.
+  * `results` - Training results for BCD Algorithm.
+  * `CD_utilities.py` - Contains utilities for training with BCD algorithm.
+  * `Convolution_BCD.ipynb` - Notebook for the comparison between a CNN and an MLP trained with the BCD algorithm.
+  * `layers.py` - Contains the implementation of the activations and the update functions, for the three basic layers (Fully Connected, Convolution, Average pooling)
   * `Torch_architectures.py` - This file contains a 4 layer MLP for pytorch, so that we can do comparisons between BCD and traditional optimizers.
   * `Train_functions.py` - This file contains two training functions, one for our architecture and one for pytorch.
   * `utilities.py` - This file contains some basic utility functions.
@@ -23,14 +23,19 @@ This repository contains the implementation of the Block Coordinate Descent and 
 *  `DFW.ipynb` - Notebook for reproducibility of the results concerning Deep Frank-Wolfe
 * `requirements.txt` - Requirements text file
 
+## Installation
+To clone the following repository, please run:\
+`git clone https://github.com/johnmavro/Machine-Learning-Optimization.git`
+
 ## Requirements
 Requirements for the needed packages are available in requirements.txt. To install the needed packages, please run:\
 `pip install -r requirements.txt`
 
-## Reproducibility
-We provide two notebooks `DFW.ipynb` and `BCD.ipynb` for reproducibility of the obtained results.
-We recommend to run the notebooks in Google Colab for your facilitation since we provide a simple interface.
-In each notebook running the second to last cell will train the model, with the parameters specified above, while running the last one will reproduce the plots presented in the report.
+## Reproducibility of the results
+We provide two notebooks `DFW.ipynb` and `BCD.ipynb` for reproducibility of the obtained results. We recommend runnning the notebooks in Google Colab for your facilitation, since we provide a simple interface.\
+Each notebook is organized as follows: you can perform training, with a selected architecture and a selected optimizer, by running the third to last cell, and the second to last cell will show a plot of the obtained training trends. Otherwise, running the last cell will load directly our results from the dictionaries
+and thus show the plots which are presented in the report.\
+Finally, in both notebooks, you find the hyper-parameters we used for training at the very bottom.
 
 ## Example of usage
 * Deep Frank-Wolfe
@@ -44,10 +49,10 @@ optimizer.zero_grad()
 output = model.train()(x)
 loss = loss_criterion(y, output)
 loss.backward()
-optimizer.step(lambda: float(loss), model, x, y)  # needs to have access to the loss and the model
+optimizer.step(lambda: float(loss))  # needs to have access to the loss and the model
 ```
-* Block Coordinate Descent
 
+* Block Coordinate Descent
 ```python
 
 # The optimizer is not compatible with pytorch
@@ -72,7 +77,7 @@ I1 = hidden_size # unless you use convolution
 I2 = 1 # unless convolution
 niter = 50 # number of epochs
 
-# Hyper-parameters of Block coordinate descent (refer to the report)
+# hyper-parameters
 gamma = 0.1
 alpha = 4
 
@@ -89,27 +94,15 @@ train_losses,test_losses, accuracy_train, accuracy_test, epochs_times, Ws, bs =
 
 #### MNIST
 
-| 4-layer perceptron   |  Test accuracy (%)|  Time per epoch
-|:---------------------|-------------------|-------------------|
-| BCD                  | 94.54             |      1.62         |
-| Adam                 | 96.46             |      16.21        |
-| Prox Linear          | 94.56             |      2.03         |
-| BCD(GD update)       | 93.68             |      1.84         |
-| SGD (with schedule)  | 94.52             |      9.9          |
-| BCD + Adam           | 95.85             |      7.1          |
-| BCD + SGD            | 95.56             |      5.1          |
-
-##### Hyper-parameters used
-
-* Block Coordinate Descent: γ = 0.1, α = 4.
-* Adam: γ = 0.001, β1 = 0.9, β2 = 0.999.
-* SGD: γ = 0.01, μ = 0.9, scheduler StepLR(stepsize=15,
-gamma=0.2).
-* Block Coordinate Descent with Prox Linear VN update:
-γ = 0.1, α = 4.
-* Block Coordinate Descent with GD update (4) for VN :
-γ = 0.1, α = 4, T = 250, ηt = O (1/T).
-* Block Coordinate Descent: γ = 0.1, α = 4
+| 4-layer perceptron   |  Test accuracy (%)|
+|:---------------------|-------------------|
+| BCD                  | 94.54             |
+| Adam                 | 96.46             |
+| Prox Linear          | 94.56             |
+| BCD(GD update)       | 93.68             |
+| SGD (with schedule)  | 94.52             |
+| BCD + Adam           | 95.85             |
+| BCD + SGD            | 95.56             |
 
 ### Frank Wolfe
 
@@ -121,14 +114,6 @@ gamma=0.2).
 | DFW                  | 90.89             |
 | DFW multistep        | 92.13             |
 | Adam                 | 91.45             |
-
-
-##### Hyper-parameters used
-
-* DFW and DFW multistep: η = 0.1, μ = 0.9.
-* Adam: γ = 0.001, β1 = 0.9, β2 = 0.999.
-* SGD: γ = 0.01, μ = 0.9, scheduler StepLR(stepsize=20,
-gamma=0.2).
 
 ## Report
 The report in pdf format can be found in the folder `report`.
