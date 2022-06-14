@@ -118,11 +118,11 @@ train_losses,test_losses, accuracy_train, accuracy_test, epochs_times, Ws, bs =
 ## Report
 The report in pdf format can be found in the folder `report`.
 
+## Acknowledgements
+We took as a baseline for our work the GitHub repositories linked to the papers which inspired the work, namely
+[Block Coordinate Descent](https://github.com/IssamLaradji/BlockCoordinateDescent) and [Deep Frank Wolfe](https://github.com/oval-group/dfw#acknowledgments).
+
 ## Authors
 - Federico Betti
 - Ioannis Mavrothalassitis
 - Luca Rossi
-
-## Acknowledgements
-We took as a baseline for our work the GitHub repositories linked to the papers which inspired the work, namely
-[Block Coordinate Descent](https://github.com/IssamLaradji/BlockCoordinateDescent) and [Deep Frank Wolfe](https://github.com/oval-group/dfw#acknowledgments).
