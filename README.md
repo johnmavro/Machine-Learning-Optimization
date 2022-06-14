@@ -45,11 +45,12 @@ momentum = 0.9  # momentum parameter
 optimizer = DFW(model.parameters(), eta=eta, momentum=momentum,
                 prox_steps=2)  # define optimizer with multistep
 
+# given x a sample and y its target output
 optimizer.zero_grad()
 output = model.train()(x)
-loss = loss_criterion(y, output)
+loss = loss_criterion(output, y)
 loss.backward()
-optimizer.step(lambda: float(loss))  # needs to have access to the loss and the model
+optimizer.step(lambda: float(loss))  # the step needs to have access to the loss
 ```
 
 * Block Coordinate Descent
