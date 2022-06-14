@@ -88,35 +88,8 @@ train_losses,test_losses, accuracy_train, accuracy_test, epochs_times, Ws, bs =
 
 ```
 
-## Results
-
-### Coordinate Descent
-
-#### MNIST
-
-| 4-layer perceptron   |  Test accuracy (%)|
-|:---------------------|-------------------|
-| BCD                  | 93.71             |
-| Adam                 | 96.41             |
-| Prox Linear          | 93.46             |
-| BCD(GD update)       | 93.68             |
-| SGD (with schedule)  | 94.57             |
-| BCD + Adam           | 95.93             |
-| BCD + SGD            | 95.56             |
-
-### Frank Wolfe
-
-#### CIFAR10
-
-| GoogLeNet            |  Test accuracy (%)|
-|:---------------------|-------------------|
-| SGD (with schedule)  | 92.79             |
-| DFW                  | 90.89             |
-| DFW multistep        | 92.13             |
-| Adam                 | 91.45             |
-
 ## Report
-The report in pdf format can be found in the folder `report`.
+The report in pdf format can be found in the folder `Report`.
 
 ## Acknowledgements
 We took as a baseline for our work the GitHub repositories linked to the papers which inspired the work, namely
