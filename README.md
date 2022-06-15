@@ -25,7 +25,7 @@ This repository contains the implementation of the Block Coordinate Descent and 
 
 ## Installation
 To clone the following repository, please run:\
-`git clone https://github.com/johnmavro/Machine-Learning-Optimization.git`
+`git clone --recursive https://github.com/johnmavro/Machine-Learning-Optimization.git`
 
 ## Requirements
 Requirements for the needed packages are available in requirements.txt. To install the needed packages, please run:\
