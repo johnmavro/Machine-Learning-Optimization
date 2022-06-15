@@ -8,7 +8,6 @@ This repository contains the implementation of the Block Coordinate Descent and 
   * `DFW.py` - Implementation of the DFW optimizer in Pytorch.
   * `MultiClassHingeLoss.py` - Contains the implementation of the multi-class Hinge Loss as described in the original DFW paper.
 * `Block_Coordinate_Descent` - Folder containing the implementations for the Block Coordinate Descent Algorithm.
-  * `results` - Training results for BCD Algorithm.
   * `CD_utilities.py` - Contains utilities for training with BCD algorithm.
   * `Convolution_BCD.ipynb` - Notebook for the comparison between a CNN and an MLP trained with the BCD algorithm.
   * `layers.py` - Contains the implementation of the activations and the update functions, for the three basic layers (Fully Connected, Convolution, Average pooling)
