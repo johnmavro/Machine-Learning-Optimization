@@ -33,8 +33,8 @@ Requirements for the needed packages are available in requirements.txt. To insta
 
 ## Reproducibility of the results
 We provide two notebooks `DFW.ipynb` and `BCD.ipynb` for reproducibility of the obtained results. We strongly recommend runnning the notebooks in Google Colab for your facilitation, since we provide a simple interface.\
-Each notebook is organized as follows: you can perform training, with a selected architecture and a selected optimizer and saving the training statistics in the following cell will overwrite the dictionaries in which our results are stored. Running the very last cell will produce complete training trends by loading results from the dictionaries. For further instructions, please refer to the single notebooks.\
-Finally, in both notebooks, you find the hyper-parameters we used for training at the very bottom.
+Each notebook is organized as follows: you can perform training, after selecting properly the dataset, the architecture and an optimizer. You can then simply plot the training trends obtained. In order to reproduce plots like the ones presented in the report, please save the training statistics by executing the dedicated cell. Running the very last cell will then produce plots of training trends by loading results from the dictionaries which you saved by running the aforementioned cell. For further instructions, please refer to the single notebooks.\
+In both notebooks, you find the hyper-parameters we used for training at the very bottom.
 
 ## Example of usage
 * Deep Frank-Wolfe
