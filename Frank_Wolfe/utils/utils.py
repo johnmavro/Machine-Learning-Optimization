@@ -139,15 +139,15 @@ def setTrainAndTest(dataset):
     return trainTransformDict, testTransformDict
 
 
-def plot_stats(dataset_name, model_type):
+def plot_stats(dataset_name, model_type, list_optimizers):
     """
     Plots test accuracy and training loss for all the tested optimizers (Adam, SGD, DFW, DFW multistep)
+    :param list_optimizers: list of the optimizers to plot
     :param dataset_name: name of the dataset (CIFAR10, CIFAR100)
     :param model_type: architecture
     :return:
     """
     stats_dict_list = []
-    list_optimizers = ["Adam", "SGD", "DFW", "DFW_multistep"]
     for optimizer in list_optimizers:
         output_folder = os.path.join(os.getcwd(), 'Frank_Wolfe/results/' + dataset_name + '/' + model_type)
         os.makedirs(output_folder, exist_ok=True)
@@ -156,8 +156,11 @@ def plot_stats(dataset_name, model_type):
             stats_dict = pickle.load(handle)
         stats_dict_list.append(stats_dict)
 
-    list_optimizers_tilda = ["Adam", "SGD", "DFW", "DFW"]
-    nepochs = stats_dict_list[0]["Adam"]['epochs']
+    list_optimizers_tilda = [list_optimizers[i] if str(list_optimizers[i]) != "DFW_multistep" else "DFW"
+                             for i in range(len(list_optimizers))]
+
+    nepochs = stats_dict_list[0][list_optimizers[0]]['epochs']
+    
     test_acc = np.array([stats_dict_list[i][list_optimizers_tilda[i]]['test_acc']
                          for i in range(len(list_optimizers_tilda))])
     train_losses = np.array([stats_dict_list[i][list_optimizers_tilda[i]]['train_losses']
@@ -171,8 +174,8 @@ def plot_stats(dataset_name, model_type):
         ax[0, 0].set_ylim([0, 1] if dataset_name == "CIFAR10" else [0, 0.8])
         ax[0, 0].set_xlabel('Epoch', fontsize='x-large')
         ax[0, 0].set_ylabel('Test accuracy', fontsize='xx-large')
-        ax[0, 0].legend(["Adam", "SGD", "DFW", "DFW multistep"])
+        ax[0, 0].legend(list_optimizers)
         ax[0, 1].plot(np.arange(nepochs + 1), train_losses[i])
         ax[0, 1].set_xlabel('Epoch', fontsize='x-large')
         ax[0, 1].set_ylabel('Training loss', fontsize='xx-large')
-        ax[0, 1].legend(["Adam", "SGD", "DFW", "DFW multistep"])
+        ax[0, 1].legend(list_optimizers)
