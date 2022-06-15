@@ -32,8 +32,8 @@ Requirements for the needed packages are available in requirements.txt. To insta
 `pip install -r requirements.txt`
 
 ## Reproducibility of the results
-We provide two notebooks `DFW.ipynb` and `BCD.ipynb` for reproducibility of the obtained results. We recommend runnning the notebooks in Google Colab for your facilitation, since we provide a simple interface.\
-Each notebook is organized as follows: you can perform training, with a selected architecture and a selected optimizer, by running the third to last cell, and the second to last cell will show a plot of the obtained training trends. Consequently, the results you obtained can be saved in dictionaries different from the ones in which our results are stored to produce complete plots of all optimizers. For further instructions, please refer to the single notebooks. Otherwise, running the very last cell of each notebook will load directly our results from the dictionaries, thus showing the plots which are presented in the report.\
+We provide two notebooks `DFW.ipynb` and `BCD.ipynb` for reproducibility of the obtained results. We strongly recommend runnning the notebooks in Google Colab for your facilitation, since we provide a simple interface.\
+Each notebook is organized as follows: you can perform training, with a selected architecture and a selected optimizer and saving the training statistics in the following cell will overwrite the dictionaries in which our results are stored. Running the very last cell will produce complete training trends by loading results from the dictionaries. For further instructions, please refer to the single notebooks.\
 Finally, in both notebooks, you find the hyper-parameters we used for training at the very bottom.
 
 ## Example of usage
@@ -88,35 +88,8 @@ train_losses,test_losses, accuracy_train, accuracy_test, epochs_times, Ws, bs =
 
 ```
 
-## Results
-
-### Coordinate Descent
-
-#### MNIST
-
-| 4-layer perceptron   |  Test accuracy (%)|
-|:---------------------|-------------------|
-| BCD                  | 93.71             |
-| Adam                 | 96.41             |
-| Prox Linear          | 93.46             |
-| BCD(GD update)       | 93.68             |
-| SGD (with schedule)  | 94.57             |
-| BCD + Adam           | 95.93             |
-| BCD + SGD            | 95.56             |
-
-### Frank Wolfe
-
-#### CIFAR10
-
-| GoogLeNet            |  Test accuracy (%)|
-|:---------------------|-------------------|
-| SGD (with schedule)  | 92.79             |
-| DFW                  | 90.89             |
-| DFW multistep        | 92.13             |
-| Adam                 | 91.45             |
-
 ## Report
-The report in pdf format can be found in the folder `report`.
+The report in pdf format can be found in the folder `Report`.
 
 ## Acknowledgements
 We took as a baseline for our work the GitHub repositories linked to the papers which inspired the work, namely
