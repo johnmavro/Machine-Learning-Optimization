@@ -6,7 +6,6 @@ import math
 
 from CD_utilities import *
 
-
 def shift_right(l):
   """
   Shifts right a python list by one element.

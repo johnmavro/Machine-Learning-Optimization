@@ -2,6 +2,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 import torch
 import pickle
+import os
 
 def plot_train_losses(num_epochs, losses, optimizer):
     """
@@ -188,12 +189,12 @@ def plot_stats(dataset_name,opt_list,opt_list_tilda,model_type):
       i.insert(0,maximum)
     train_losses = np.array([stats_dict_list[i][list_optimizers_tilda[i]]['train_losses']
                              for i in range(len(list_optimizers_tilda))])
-    print("Average Epoch Times:")
-    for i in range(len(average_time)):
-        print(list_optimizers[i],":",np.average(average_time[i]))
-    print("Test Accuracy:")
-    for i in range(len(test_acc)):
-        print(list_optimizers[i],":",np.amax(test_acc[i]))
+    #print("Average Epoch Times:")
+    #for i in range(len(average_time)):
+    #    print(list_optimizers[i],":",np.average(average_time[i]))
+    #print("Test Accuracy:")
+    #for i in range(len(test_acc)):
+    #    print(list_optimizers[i],":",np.amax(test_acc[i]))
     #print(test_acc)
     fig, ax = plt.subplots(1, 2, figsize=(13.4, 4.8), squeeze=False)
     fig.tight_layout(pad=7.)
