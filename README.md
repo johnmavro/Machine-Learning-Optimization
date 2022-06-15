@@ -3,8 +3,6 @@ This repository contains the implementation of the Block Coordinate Descent and 
 
 ## Structure
 * `Frank_Wolfe` - Folder containing the implementation of the Deep Frank-Wolfe Algorithm
-  * `figures` - Contains the figures which are shown in the report for Frank-Wolfe
-  * `results` - Training results for DFW algorithm.
   * `utils` - Contains utilities for training with DFW algorithm.
   * `architectures.py` - Contains the implementation of the architectures used for the empirical experiments.
   * `DFW.py` - Implementation of the DFW optimizer in Pytorch.
