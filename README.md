@@ -3,7 +3,7 @@ This repository contains the implementation of the Block Coordinate Descent and 
 
 ## Structure
 * `Frank_Wolfe` - Folder containing the implementation of the Deep Frank-Wolfe Algorithm
-  * `utils` - Contains utilities for training with DFW algorithm.
+  * `utils.py` - Contains utilities for training with DFW algorithm.
   * `architectures.py` - Contains the implementation of the architectures used for the empirical experiments.
   * `DFW.py` - Implementation of the DFW optimizer in Pytorch.
   * `MultiClassHingeLoss.py` - Contains the implementation of the multi-class Hinge Loss as described in the original DFW paper.
