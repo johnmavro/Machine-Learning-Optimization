@@ -149,14 +149,15 @@ def pickle_results(name, train_loss, loss_class, accuracy_train, accuracy_val,
   pickle.dump(dictionary_save,a_file)
   a_file.close()
 
-    
-def plot_stats(dataset_name, opt_list, opt_list_tilda, model_type):
+
+def plot_stats(dataset_name, opt_list, opt_list_tilda, model_type,epochs):
     """
     Plots test accuracy and training loss for all the tested optimizers
     :param dataset_name: name of the dataset (CIFAR10, MNIST, FMNIST)
     :param opt_list: list of the names of the optimizers to reproduce
     :param opt_list_tilda: list of the type of the optimizers
     :param model_type: architecture
+    :param epochs: number of epochs
     :return:
     """
     stats_dict_list = []
@@ -170,11 +171,11 @@ def plot_stats(dataset_name, opt_list, opt_list_tilda, model_type):
         stats_dict_list.append(stats_dict)
 
     list_optimizers_tilda = opt_list_tilda
-    nepochs = stats_dict_list[0][opt_list[0]]['epochs']
-    
+    nepochs = epochs
+
     average_time = np.array([stats_dict_list[i][list_optimizers_tilda[i]]['epochs']
                          for i in range(len(list_optimizers_tilda))])
-    
+
     tmp = [stats_dict_list[i][list_optimizers_tilda[i]]['test_acc']
                          for i in range(len(list_optimizers_tilda))]
     for i in tmp:
@@ -190,7 +191,7 @@ def plot_stats(dataset_name, opt_list, opt_list_tilda, model_type):
       i.insert(0,maximum)
     train_losses = np.array([stats_dict_list[i][list_optimizers_tilda[i]]['train_losses']
                              for i in range(len(list_optimizers_tilda))])
-    
+
     fig, ax = plt.subplots(1, 2, figsize=(13.4, 4.8), squeeze=False)
     fig.tight_layout(pad=7.)
     fig.subplots_adjust(top=0.9, left=0.1, right=0.9, bottom=0.12)
