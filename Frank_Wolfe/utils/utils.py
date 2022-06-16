@@ -142,9 +142,9 @@ def setTrainAndTest(dataset):
 def plot_stats(dataset_name, model_type, list_optimizers):
     """
     Plots test accuracy and training loss for all the tested optimizers (Adam, SGD, DFW, DFW multistep)
-    :param list_optimizers: list of the optimizers to plot
     :param dataset_name: name of the dataset (CIFAR10, CIFAR100)
     :param model_type: architecture
+    :param list_optimizers: list of the optimizers to plot
     :return:
     """
     stats_dict_list = []
