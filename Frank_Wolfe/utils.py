@@ -159,7 +159,7 @@ def plot_stats(dataset_name, model_type, list_optimizers):
     list_optimizers_tilda = [list_optimizers[i] if str(list_optimizers[i]) != "DFW_multistep" else "DFW"
                              for i in range(len(list_optimizers))]
 
-    nepochs = stats_dict_list[0][list_optimizers[0]]['epochs']
+    nepochs = stats_dict_list[0][list_optimizers_tilda[0]]['epochs']
     
     test_acc = np.array([stats_dict_list[i][list_optimizers_tilda[i]]['test_acc']
                          for i in range(len(list_optimizers_tilda))])

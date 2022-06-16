@@ -1,6 +1,6 @@
 import torch
 import torch.optim as optim
-from Frank_Wolfe.MultiClassHingeLoss import *
+from MultiClassHingeLoss import *
 from collections import defaultdict
 
 
