@@ -170,7 +170,7 @@ def plot_stats(dataset_name, opt_list, opt_list_tilda, model_type):
         stats_dict_list.append(stats_dict)
 
     list_optimizers_tilda = opt_list_tilda
-    nepochs = stats_dict_list[0][list_optimizers[0]]['epochs']
+    nepochs = stats_dict_list[0][opt_list[0]]['epochs']
     
     average_time = np.array([stats_dict_list[i][list_optimizers_tilda[i]]['epochs']
                          for i in range(len(list_optimizers_tilda))])
